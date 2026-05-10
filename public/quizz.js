@@ -15,7 +15,7 @@ const WHATSAPP_NUMERO = '19418705458';
 // URL do Web App do Google Apps Script (cola aqui depois do deploy do script).
 // Veja scripts/google-apps-script.gs pro passo a passo. Se ficar vazio, o
 // envio pra planilha simplesmente não acontece (não quebra nada).
-const SHEETS_WEBHOOK_URL = '';
+const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyh3EGa2HUx1fiI6X745SWtUWjhyQbre0hA9ZM1AqCXgxNhnRwLdjULeY6rSDd2Fr4OoQ/exec';
 
 // ============================================
 // PERFIS DE DIAGNÓSTICO
