@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conversa direta com o Jackson. O método que tirou ele do quase-voltar-pro-Brasil pra US$78k em 1 mês com a própria companhia na Florida — agora aplicado em outras companhias de brasileiros nos EUA.">
+  <title>Jackson · de US$0 a US$78k/mês na Florida</title>
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tracking (Pixel + CAPI) -->
+  <script src="tracking.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-slate-100 min-h-screen">
+
+  <!-- HEADER FIXO COM AVATAR DO JACKSON -->
+  <header class="us-header fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-2xl mx-auto px-4 py-3 flex items-center gap-3">
+      <img src="assets/foto%20jackson.webp" alt="Jackson" class="avatar-jackson w-10 h-10 rounded-full border-2" style="border-color: var(--us-red);">
+      <div class="flex-1">
+        <p class="text-sm font-bold leading-tight">JACKSON</p>
+        <p class="text-xs text-slate-400 leading-tight">Florida 2019 → 2022 · agora aqui pra te ajudar</p>
+      </div>
+      <span class="us-stars hidden sm:inline">★ ★ ★</span>
+    </div>
+    <div class="h-1 bg-slate-900">
+      <div id="progress-bar" class="h-1 transition-all duration-500" style="width: 0%"></div>
+    </div>
+  </header>
+
+  <main class="pt-24 pb-12 px-4 max-w-2xl mx-auto">
+
+    <!-- ============================================ -->
+    <!-- TELA 01 — INTRO -->
+    <!-- ============================================ -->
+    <section id="screen-01" class="screen">
+      <img src="assets/foto%20jackson.webp" alt="Jackson" class="avatar-jackson w-36 h-36 md:w-44 md:h-44 mx-auto block rounded-full border-4 mb-6 shadow-2xl" style="border-color: var(--us-red); box-shadow: 0 20px 50px -10px var(--us-red-glow);">
+
+      <p class="us-stars text-center mb-3">★ ★ ★ ★ ★</p>
+
+      <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4 text-center">
+        De imigrante <span class="us-highlight-red">sem falar inglês</span> a <span class="us-highlight-red">US$78.000</span> em um único mês na Florida.
+      </h1>
+      <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+        Eu sou o <strong class="text-white">Jackson</strong>. Cheguei nos Estados Unidos em 2017, abri minha Painting na Florida no fim de 2019, quase voltei pro Brasil em 2021 quebrado — e em 2022 fechei <strong class="us-highlight-red">US$78k em 30 dias</strong> com 2 equipes.
+      </p>
+      <p class="text-slate-400 text-base mb-8 leading-relaxed">
+        Hoje aplico o mesmo protocolo em outras companhias de brasileiros aqui nos EUA. Em 4 minutos você descobre se a sua operação cabe na minha agenda.
+      </p>
+
+      <ul class="space-y-3 text-slate-300 mb-8">
+        <li class="flex items-start gap-3">
+          <span class="us-highlight-red text-lg leading-none">✓</span>
+          <span>Conversa direta comigo, em português</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="us-highlight-red text-lg leading-none">✓</span>
+          <span>Sem proposta genérica — diagnóstico do seu caso</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="us-highlight-red text-lg leading-none">✓</span>
+          <span>De brasileiro pra brasileiro com service business nos EUA</span>
+        </li>
+      </ul>
+
+      <button onclick="startQuizz()" class="cta-primary w-full py-4 rounded-xl text-lg active:scale-95">
+        Quero saber se cabe →
+      </button>
+      <p class="text-center text-slate-500 text-xs mt-3">Sigiloso · 4 minutos · sem custo</p>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 02 — TIPO DE SERVIÇO -->
+    <!-- ============================================ -->
+    <section id="screen-02" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Pra começar</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Qual é o serviço da sua companhia hoje nos EUA?</h2>
+      <div class="space-y-2" data-question="servico" data-type="single">
+        <button class="option-btn" data-value="painting">Painting (interior, exterior, comercial)</button>
+        <button class="option-btn" data-value="cleaning">Cleaning (residencial, comercial, post-construction)</button>
+        <button class="option-btn" data-value="pavers">Pavers / Hardscape</button>
+        <button class="option-btn" data-value="roofing">Roofing</button>
+        <button class="option-btn" data-value="construction">Construction / Remodeling</button>
+        <button class="option-btn" data-value="landscaping">Landscaping / Lawn Care</button>
+        <button class="option-btn" data-value="hvac">HVAC / Air Conditioning</button>
+        <button class="option-btn" data-value="plumbing-electric">Plumbing / Electrical</button>
+        <button class="option-btn" data-value="flooring">Flooring</button>
+        <button class="option-btn" data-value="pressure-washing">Pressure Washing</button>
+        <button class="option-btn" data-value="auto-detailing">Auto Detailing</button>
+        <button class="option-btn" data-value="moving">Moving / Junk Removal</button>
+        <button class="option-btn" data-value="outro">Outro service business</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 03 — FATURAMENTO MENSAL (USD) -->
+    <!-- ============================================ -->
+    <section id="screen-03" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Sobre sua operação</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Qual seu faturamento mensal médio nos últimos 90 dias?</h2>
+      <div class="space-y-2" data-question="faturamento" data-type="single">
+        <button class="option-btn" data-value="ate-5k">Até US$5.000/mês</button>
+        <button class="option-btn" data-value="5k-15k">US$5.000 a US$15.000/mês</button>
+        <button class="option-btn" data-value="15k-30k">US$15.000 a US$30.000/mês</button>
+        <button class="option-btn" data-value="30k-60k">US$30.000 a US$60.000/mês</button>
+        <button class="option-btn" data-value="60k+">Acima de US$60.000/mês</button>
+        <button class="option-btn" data-value="prefiro-nao">Prefiro não responder agora</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 04 — NARRATIVA JACKSON #1 (a história) -->
+    <!-- ============================================ -->
+    <section id="screen-04" class="screen hidden">
+      <div class="flex items-start gap-4 mb-6">
+        <img src="assets/foto%20jackson.webp" alt="Jackson" class="avatar-jackson w-16 h-16 rounded-full border-2 flex-shrink-0" style="border-color: var(--us-red);">
+        <div>
+          <p class="font-bold">JACKSON</p>
+          <p class="text-sm text-slate-400">Falando direto contigo</p>
+        </div>
+      </div>
+      <div class="story-box">
+        <div class="space-y-4 text-lg text-slate-200 leading-relaxed">
+          <p class="narrative-line">Antes de continuar, deixa eu te contar uma coisa rapidinho.</p>
+          <p class="narrative-line">Em 2017 eu cheguei aqui nos EUA com o dinheiro que juntei vendendo peça de moto na lojinha do meu pai no Brasil. Não falava inglês. Não falo até hoje.</p>
+          <p class="narrative-line">No fim de 2019 abri a <strong class="text-white">Jackson's Painting Florida</strong>. Fiz tudo que todo brasileiro faz no começo: cartão, panfleto, Google Ads no chute. Cheguei a faturar uns <strong class="us-highlight-red">US$12 mil</strong> num mês — e no mês seguinte caí de novo.</p>
+          <p class="narrative-line">Aí contratei agência americana: <strong class="us-highlight-red">US$2.300/mês</strong>. Paguei aplicativo atrás de aplicativo: mais <strong class="us-highlight-red">US$6.000</strong>. Quando vi, tinha jogado quase <strong class="us-highlight-red">US$20 mil</strong> e tava faturando <strong class="us-highlight-red">US$16 mil</strong>. Comendo minha reserva.</p>
+          <p class="narrative-line">Em 2021 eu sentei com a minha esposa pra falar de voltar pro Brasil. Sério.</p>
+          <figure class="narrative-line my-2">
+            <img src="assets/jackson-esposa.webp" alt="Jackson e esposa" class="w-full rounded-lg">
+            <figcaption class="text-xs text-slate-500 italic mt-2 text-center">Eu e ela hoje. Em 2021, era ela que segurava a barra comigo enquanto eu queimava reserva e quase desistia.</figcaption>
+          </figure>
+          <p class="narrative-line">Te pergunto isso de faturamento porque eu sei o que é olhar o extrato e ver tudo virando vermelho. Continua aqui — eu te conto o resto.</p>
+        </div>
+      </div>
+      <button onclick="nextScreen()" class="cta-primary mt-8 w-full py-4 rounded-xl text-lg active:scale-95">
+        Continuar →
+      </button>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 05 — INVESTIMENTO ATUAL EM MARKETING -->
+    <!-- ============================================ -->
+    <section id="screen-05" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Sobre marketing</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Quanto sua companhia investe em marketing/anúncios hoje, por mês?</h2>
+      <div class="space-y-2" data-question="investimento" data-type="single">
+        <button class="option-btn" data-value="nada">Não invisto nada — só indicação e boca-a-boca</button>
+        <button class="option-btn" data-value="ate-500">Até US$500/mês (Google, Facebook, panfleto)</button>
+        <button class="option-btn" data-value="500-2k">US$500 a US$2.000/mês</button>
+        <button class="option-btn" data-value="2k-5k">US$2.000 a US$5.000/mês</button>
+        <button class="option-btn" data-value="5k+">Acima de US$5.000/mês (incluindo agência)</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 06 — DORES (multi-select) -->
+    <!-- ============================================ -->
+    <section id="screen-06" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Conta pra mim</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">O que você vive hoje na sua companhia?</h2>
+      <p class="text-slate-400 text-sm mb-6">Marca tudo que se aplica</p>
+      <div class="space-y-2" data-question="dores" data-type="multi">
+        <button class="option-btn" data-value="so-indicacao">Dependo só de indicação — sem indicação, sem trabalho</button>
+        <button class="option-btn" data-value="sem-google">Não apareço no Google da minha região</button>
+        <button class="option-btn" data-value="sem-site">Não tenho site de verdade (ou tenho um amador)</button>
+        <button class="option-btn" data-value="ingles-estimate">Travo no inglês na hora de passar estimate / atender o cliente</button>
+        <button class="option-btn" data-value="agencia-decepcao">Já paguei agência americana e me arrependi</button>
+        <button class="option-btn" data-value="sem-vendas">Gero lead mas não tenho quem feche — perco a venda no telefone</button>
+        <button class="option-btn" data-value="preco-baixo">Concorrência me engole no preço — sou sempre o mais barato</button>
+        <button class="option-btn" data-value="gasto-sem-retorno">Gasto em ads e não vejo retorno claro</button>
+        <button class="option-btn" data-value="sem-previsibilidade">Mês bom, mês ruim — zero previsibilidade</button>
+        <button class="option-btn" data-value="sozinho-tudo">Faço tudo sozinho: orçar, ir no job, cobrar, atender</button>
+        <button class="option-btn" data-value="outro">Outro</button>
+      </div>
+      <button onclick="nextScreen()" class="cta-primary mt-6 w-full py-4 rounded-xl text-lg active:scale-95">
+        Continuar →
+      </button>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 07 — HISTÓRICO COM AGÊNCIA -->
+    <!-- ============================================ -->
+    <section id="screen-07" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Sobre sua experiência</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Você já contratou agência americana ou marketing pago aqui nos EUA?</h2>
+      <div class="space-y-2" data-question="historico" data-type="single">
+        <button class="option-btn" data-value="nunca">Nunca contratei</button>
+        <button class="option-btn" data-value="uma-vez-ruim">Sim, uma vez — não deu retorno</button>
+        <button class="option-btn" data-value="multiplas-decepcoes">Sim, mais de uma vez — perdi muito dinheiro</button>
+        <button class="option-btn" data-value="atual-insatisfeito">Tenho agência hoje, mas tô insatisfeito</button>
+        <button class="option-btn" data-value="boa-experiencia">Sim, e foi uma boa experiência</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 08 — NARRATIVA JACKSON #2 (mecanismo + cases) -->
+    <!-- ============================================ -->
+    <section id="screen-08" class="screen hidden">
+      <div class="flex items-start gap-4 mb-6">
+        <img src="assets/foto%20jackson.webp" alt="Jackson" class="avatar-jackson w-16 h-16 rounded-full border-2 flex-shrink-0" style="border-color: var(--us-red);">
+        <div>
+          <p class="font-bold">JACKSON</p>
+          <p class="text-sm text-slate-400">Continuando a história</p>
+        </div>
+      </div>
+      <div class="story-box mb-6">
+        <div class="space-y-4 text-lg text-slate-200 leading-relaxed">
+          <p class="narrative-line">Antes de fazer as malas pra voltar pro Brasil, eu lembrei de uma coisa que meu pai me ensinou na lojinha de peças.</p>
+          <p class="narrative-line"><em>"Olha o que o concorrente faz de diferente. Faz igual. Mas faz melhor."</em></p>
+          <p class="narrative-line">Sentei a bunda na cadeira e estudei as companhias americanas que tavam ranqueadas no topo do Google cobrando o <strong class="text-white">dobro</strong> do meu preço.</p>
+          <p class="narrative-line">Descobri que o segredo é o feijão com arroz <strong class="text-white">bem feito</strong>: site simples e direto, SEO local pra ranquear no Google da minha cidade, ads cirúrgicos pegando o home owner <em>no momento</em> que ele busca o serviço — e o principal: <strong class="us-highlight-red">um time de vendas que sabe atender em inglês e cria valor antes de soltar o preço</strong>.</p>
+          <p class="narrative-line">Em 2022, num único mês, fechei <strong class="us-highlight-red">US$78 mil</strong>. 7 a 8 projetos. Apenas 2 equipes. A mesma companhia que ia fechar.</p>
+          <figure class="narrative-line my-2 max-w-xs mx-auto">
+            <img src="assets/jacksons-painting-van.webp" alt="Van da Jackson's Painting Florida" class="w-full rounded-lg">
+            <figcaption class="text-xs text-slate-500 italic mt-2 text-center">Essa van saiu de US$0 pra US$78k/mês.</figcaption>
+          </figure>
+          <p class="narrative-line">Em 2022 mesmo eu vendi a Jackson's Painting pros parceiros americanos e voltei pro Brasil. Mas o protocolo continua rodando — agora pra outras companhias de brasileiros aqui nos EUA.</p>
+        </div>
+      </div>
+
+      <p class="us-stars text-center mb-3">★ RESULTADOS REAIS DOS PARCEIROS ★</p>
+
+      <!-- TESTEMUNHOS REAIS — PRINTS WHATSAPP -->
+      <div class="testimonial-grid grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+        <div class="testimonial-card">
+          <img src="assets/feedback-grazy.webp" alt="Feedback Grazy Melo">
+          <div class="p-3">
+            <p class="font-bold text-sm text-white">Grazy · Melo General Services</p>
+            <p class="text-xs text-slate-400">14 casas regulares fechadas no 1º mês</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <img src="assets/feedback-claudio.webp" alt="Feedback Claudio Silva" style="object-position: bottom center;">
+          <div class="p-3">
+            <p class="font-bold text-sm text-white">Claudio Silva</p>
+            <p class="text-xs text-slate-400">Quase US$10k em projetos numa semana</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <img src="assets/feedback-pavers.webp" alt="Feedback Partners Pavers">
+          <div class="p-3">
+            <p class="font-bold text-sm text-white">Peixoto · Partners Pavers</p>
+            <p class="text-xs text-slate-400">Projeto de quase US$30k fechado</p>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="nextScreen()" class="cta-primary w-full py-4 rounded-xl text-lg active:scale-95">
+        Continuar →
+      </button>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 09 — MAIOR DESEJO/GARGALO -->
+    <!-- ============================================ -->
+    <section id="screen-09" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Pensando na sua companhia</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Se eu pudesse resolver UM problema pra você nos próximos 90 dias, qual seria?</h2>
+      <div class="space-y-2" data-question="gargalo" data-type="single">
+        <button class="option-btn" data-value="mais-leads">Encher meu telefone de pedidos de estimate qualificados</button>
+        <button class="option-btn" data-value="ranquear-google">Aparecer no topo do Google da minha região</button>
+        <button class="option-btn" data-value="time-vendas">Ter um time de vendas em inglês que feche por mim</button>
+        <button class="option-btn" data-value="parar-indicacao">Parar de depender só de indicação</button>
+        <button class="option-btn" data-value="cobrar-mais">Conseguir cobrar mais sem perder o cliente</button>
+        <button class="option-btn" data-value="previsibilidade">Ter previsibilidade — saber quanto vou faturar mês que vem</button>
+        <button class="option-btn" data-value="escalar-equipes">Escalar de 1-2 equipes pra 4-5 sem entrar em pânico</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 10 — DECISOR -->
+    <!-- ============================================ -->
+    <section id="screen-10" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Sobre a decisão</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Quem decide sobre investimento na sua companhia?</h2>
+      <div class="space-y-2" data-question="decisor" data-type="single">
+        <button class="option-btn" data-value="solo">Sou eu, sozinho</button>
+        <button class="option-btn" data-value="com-conjuge">Eu, mas consulto minha esposa/marido</button>
+        <button class="option-btn" data-value="com-socio">Eu, junto com sócio</button>
+        <button class="option-btn" data-value="terceiros">Preciso aprovar com terceiros</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 11 — COMPROMETIMENTO ($800+) -->
+    <!-- ============================================ -->
+    <section id="screen-11" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Honesto pra te poupar tempo</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-4 leading-tight">
+        Se eu pudesse colocar um valor no que esse protocolo fez pela <em>minha</em> companhia — e pelas dos parceiros que hoje fecham US$10k, US$30k em projetos — eu te diria que <span class="us-highlight-red">não tem preço</span>.
+      </h2>
+      <div class="story-box mb-6">
+        <p class="text-slate-300 leading-relaxed mb-3">
+          Mas pra você ter clareza antes da call: <strong class="text-white">o ponto de entrada começa em US$800</strong>. Não é taxa de implementação completa — é só o que a gente precisa pra montar junto a primeira camada da sua máquina (site, presença no Google e tráfego inicial). Conforme a companhia cresce, a estrutura cresce junto.
+        </p>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Eu prefiro te falar isso agora do que te chamar pra uma call e descobrir junto que não cabia. Se cabe, a gente conversa de igual pra igual.
+        </p>
+      </div>
+      <p class="text-slate-200 font-medium mb-4">Esse investimento cabe no seu momento atual?</p>
+      <div class="space-y-2" data-question="comprometimento" data-type="single">
+        <button class="option-btn" data-value="cabe">Sim, cabe — quero entender o próximo passo</button>
+        <button class="option-btn" data-value="cabe-se-roi">Topo, mas preciso entender o ROI projetado primeiro</button>
+        <button class="option-btn" data-value="alto-pensar">É alto pro meu momento, preciso pensar</button>
+        <button class="option-btn" data-value="nao-cabe">Hoje não cabe</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 12 — JANELA DE INÍCIO -->
+    <!-- ============================================ -->
+    <section id="screen-12" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Última pergunta</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Se a gente identificar que faz sentido — quando você quer começar?</h2>
+      <div class="space-y-2" data-question="janela" data-type="single">
+        <button class="option-btn" data-value="imediato">Imediatamente, tô pronto</button>
+        <button class="option-btn" data-value="2-4-semanas">Nas próximas 2 a 4 semanas</button>
+        <button class="option-btn" data-value="1-3-meses">Em 1 a 3 meses</button>
+        <button class="option-btn" data-value="explorando">Tô explorando, sem pressa</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 13 — LOADING -->
+    <!-- ============================================ -->
+    <section id="screen-13" class="screen hidden">
+      <div class="text-center py-16">
+        <div class="loading-dots flex justify-center gap-2 mb-8">
+          <span class="w-3 h-3 rounded-full inline-block"></span>
+          <span class="w-3 h-3 rounded-full inline-block"></span>
+          <span class="w-3 h-3 rounded-full inline-block"></span>
+        </div>
+        <p class="text-xl font-medium mb-12">Analisando sua operação...</p>
+
+        <div id="loading-rotator" class="story-box max-w-lg mx-auto min-h-[120px] flex items-center justify-center">
+          <p class="text-slate-300 italic transition-opacity duration-500">Cruzando suas respostas com mais de 60 companhias de brasileiros nos EUA já analisadas...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA 14 — DIAGNÓSTICO + WHATSAPP -->
+    <!-- ============================================ -->
+    <section id="screen-14" class="screen hidden">
+      <div class="story-box mb-6">
+        <p class="us-highlight-red text-sm font-semibold mb-2 uppercase tracking-wider">Seu perfil</p>
+        <h2 id="perfil-nome" class="text-3xl md:text-4xl font-bold mb-4 text-white"></h2>
+        <p id="perfil-descricao" class="text-slate-300 leading-relaxed mb-6"></p>
+
+        <div id="perfil-testemunho" class="quote-border mb-6"></div>
+
+        <p class="text-slate-200 leading-relaxed font-medium">
+          O próximo passo é uma <strong class="text-white">call de análise estratégica direto comigo</strong>, em português. Sem proposta genérica — vou olhar sua operação, seu mercado, seu momento, e te falar exatamente o que eu faria se fosse minha companhia hoje.
+        </p>
+        <p class="text-slate-500 text-xs mt-4">— Jackson</p>
+      </div>
+
+      <a id="whatsapp-btn"
+         href="#"
+         target="_blank"
+         rel="noopener"
+         onclick="trackLead(event)"
+         class="whatsapp-cta block w-full py-5 rounded-xl text-lg text-center flex items-center justify-center gap-3">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Falar direto com o Jackson
+      </a>
+
+      <p class="text-center text-slate-500 text-xs mt-4">
+        Atendimento humano · Resposta em até 2h úteis · Em português
+      </p>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TELA WAITLIST (faturamento muito baixo OU não cabe $800) -->
+    <!-- ============================================ -->
+    <section id="screen-waitlist" class="screen hidden">
+      <div class="story-box text-center">
+        <p class="us-stars mb-4">★ ★ ★</p>
+        <h2 class="text-2xl font-bold mb-4 text-white">Obrigado pela sinceridade.</h2>
+        <p class="text-slate-300 mb-4 leading-relaxed">
+          Eu já estive aí. No começo da Jackson's Painting, eu não tinha US$800 sobrando no caixa pra investir em estrutura. Quem te promete que tem é o americano da agência cobrando US$2.300 e te deixando pior do que antes.
+        </p>
+        <p class="text-slate-300 mb-4 leading-relaxed">
+          Por isso eu prefiro ser direto: meu protocolo não vai te servir agora. O melhor passo pro seu momento é validar mais o serviço, fechar uns jobs no boca-a-boca e voltar aqui quando o caixa permitir.
+        </p>
+        <p class="text-slate-300 mb-6 leading-relaxed">
+          Vou te colocar na minha lista de espera. Quando sua companhia chegar no patamar certo, eu mesmo te chamo.
+        </p>
+        <p class="us-highlight-red text-sm font-semibold">Você foi adicionado à minha lista de espera.</p>
+        <p class="text-slate-500 text-xs mt-4">— Jackson</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="quizz.js"></script>
+</body>
+</html>

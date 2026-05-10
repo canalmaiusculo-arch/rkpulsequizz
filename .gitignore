@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# package-lock pode entrar — fica como decisão do projeto
+
+# Imagens-fonte originais (já otimizadas em public/assets/*.webp)
+# e projeto de referência — não vão pro deploy
+/assets/
+/exemplo/
+
+# Source images dentro de public/assets/ — só os .webp são usados.
+# Mantém os originais locais pra re-rodar `npm run optimize`.
+public/assets/*.jpg
+public/assets/*.jpeg
+public/assets/*.png

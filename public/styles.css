@@ -1,0 +1,253 @@
+/* ============================================
+   PALETA — RK Pulse Digital · identidade US
+   Navy profundo + branco + vermelho americano
+   ============================================ */
+:root {
+  --bg-deep: #060d1f;
+  --bg-card: #0e162e;
+  --bg-card-hover: #15203f;
+  --border-subtle: #1d2746;
+  --border-strong: #2a3658;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --us-red: #dc2626;
+  --us-red-hover: #ef4444;
+  --us-red-glow: rgba(220, 38, 38, 0.45);
+  --us-blue: #1d4ed8;
+  --us-blue-light: #60a5fa;
+  --us-white: #f8fafc;
+}
+
+/* Background com listras sutis (alusão à bandeira US sem ser pesado) */
+body {
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(at 20% 0%, rgba(29, 78, 216, 0.12) 0, transparent 50%),
+    radial-gradient(at 80% 100%, rgba(220, 38, 38, 0.08) 0, transparent 50%);
+  background-attachment: fixed;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+/* ============================================
+   Header — bandeira de status sutil
+   ============================================ */
+.us-header {
+  background: rgba(6, 13, 31, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.us-header::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--us-blue) 0%, var(--us-white) 50%, var(--us-red) 100%);
+  opacity: 0.55;
+}
+
+/* Faixa de progresso vermelha americana */
+#progress-bar {
+  background: linear-gradient(90deg, var(--us-red) 0%, #f87171 100%);
+  box-shadow: 0 0 12px var(--us-red-glow);
+}
+
+/* ============================================
+   Transições entre telas
+   ============================================ */
+.screen {
+  animation: fadeIn 0.45s ease-out;
+}
+
+.screen.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   Botões de opção — estilo cartão US
+   ============================================ */
+.option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.75rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.option-btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--us-red);
+  transform: translateX(2px);
+}
+
+.option-btn.selected {
+  border-color: var(--us-red);
+  background-color: rgba(220, 38, 38, 0.12);
+  box-shadow: inset 4px 0 0 var(--us-red);
+}
+
+/* ============================================
+   CTAs principais — vermelho americano
+   ============================================ */
+.cta-primary {
+  background: linear-gradient(135deg, var(--us-red) 0%, #b91c1c 100%);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 6px 22px -6px var(--us-red-glow);
+  transition: all 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.cta-primary:hover {
+  background: linear-gradient(135deg, var(--us-red-hover) 0%, var(--us-red) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px -6px var(--us-red-glow);
+}
+.cta-primary:active {
+  transform: scale(0.97);
+}
+
+/* ============================================
+   Avatar do Jackson — recorte focado no rosto
+   (foto vertical em estúdio, rosto no terço superior)
+   ============================================ */
+.avatar-jackson {
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+
+/* ============================================
+   Narrativas — fade-in linha por linha
+   ============================================ */
+.narrative-line {
+  opacity: 0;
+  animation: fadeInLine 0.6s ease-out forwards;
+}
+
+.narrative-line:nth-child(1) { animation-delay: 0.2s; }
+.narrative-line:nth-child(2) { animation-delay: 1.4s; }
+.narrative-line:nth-child(3) { animation-delay: 2.6s; }
+.narrative-line:nth-child(4) { animation-delay: 3.8s; }
+.narrative-line:nth-child(5) { animation-delay: 5.0s; }
+.narrative-line:nth-child(6) { animation-delay: 6.2s; }
+.narrative-line:nth-child(7) { animation-delay: 7.4s; }
+
+@keyframes fadeInLine {
+  to { opacity: 1; }
+}
+
+/* ============================================
+   Cards de prova social (testemunhos)
+   Altura fixa nas imagens evita desalinhamento entre
+   prints de WhatsApp com aspectos diferentes.
+   ============================================ */
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.testimonial-card:hover {
+  border-color: var(--us-red);
+}
+
+/* Card de imagem única (ex.: van da Jackson's Painting na tela 1) */
+.testimonial-card > img {
+  width: 100%;
+  display: block;
+}
+
+/* Cards do grid de testemunhos — altura uniforme com crop no topo */
+.testimonial-grid {
+  align-items: stretch;
+}
+.testimonial-grid .testimonial-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.testimonial-grid .testimonial-card > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ============================================
+   Tela de loading — pontos US
+   ============================================ */
+.loading-dots span {
+  background-color: var(--us-red);
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* ============================================
+   Botão WhatsApp final
+   ============================================ */
+.whatsapp-cta {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 10px 30px -10px rgba(34, 197, 94, 0.6);
+  transition: all 0.2s;
+}
+.whatsapp-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px -10px rgba(34, 197, 94, 0.8);
+}
+.whatsapp-cta:active {
+  transform: scale(0.97);
+}
+
+/* ============================================
+   Highlights US patriotic (highlight texto)
+   ============================================ */
+.us-highlight-red { color: #f87171; font-weight: 700; }
+.us-highlight-blue { color: var(--us-blue-light); font-weight: 700; }
+
+/* Borda lateral de testemunho */
+.quote-border {
+  border-left: 3px solid var(--us-red);
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* Selo "stars" (estrelinhas decorativas) */
+.us-stars {
+  color: var(--us-blue-light);
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+}
+
+/* Caixa "story" do Jackson (narrativas) */
+.story-box {
+  background: linear-gradient(180deg, rgba(29, 78, 216, 0.06) 0%, rgba(220, 38, 38, 0.04) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}

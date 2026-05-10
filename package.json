@@ -1,0 +1,16 @@
+{
+  "name": "rk-pulse-quizz",
+  "version": "1.0.0",
+  "description": "Quizz conversacional RK Pulse Digital — DR + tracking dual (Pixel + CAPI)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod",
+    "optimize": "node scripts/optimize-images.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5",
+    "vercel": "^32.0.0"
+  }
+}
