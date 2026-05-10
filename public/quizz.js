@@ -12,6 +12,11 @@ const TOTAL_SCREENS = 14;
 // WhatsApp do Jackson / RK Pulse Digital — +1 (941) 870-5458
 const WHATSAPP_NUMERO = '19418705458';
 
+// URL do Web App do Google Apps Script (cola aqui depois do deploy do script).
+// Veja scripts/google-apps-script.gs pro passo a passo. Se ficar vazio, o
+// envio pra planilha simplesmente não acontece (não quebra nada).
+const SHEETS_WEBHOOK_URL = '';
+
 // ============================================
 // PERFIS DE DIAGNÓSTICO
 // Cada perfil é um espelho de uma fase da jornada do Jackson —
@@ -106,6 +111,7 @@ function showScreen(num) {
     renderizarDiagnostico(perfil);
     montarLinkWhatsApp(perfil);
     trackEvent('QuizCompleted', { perfil });
+    enviarParaSheet('completed');
   }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -320,6 +326,42 @@ function mostrarWaitlist(motivo) {
     servico: state.answers.servico,
     faturamento: state.answers.faturamento
   });
+
+  enviarParaSheet('waitlist');
+}
+
+// ============================================
+// ENVIA LEAD PRA GOOGLE SHEET (via Apps Script Web App)
+// ============================================
+function enviarParaSheet(status) {
+  if (!SHEETS_WEBHOOK_URL) return; // nada configurado, ignora silenciosamente
+
+  // Calcula perfil só pra completed (na waitlist o lead nem chegou no fim)
+  const perfil = status === 'completed' ? calcularPerfil(state.answers) : '';
+
+  const payload = {
+    status,
+    perfil,
+    servico: state.answers.servico || '',
+    faturamento: state.answers.faturamento || '',
+    investimento: state.answers.investimento || '',
+    dores: state.answers.dores || [],
+    historico: state.answers.historico || '',
+    gargalo: state.answers.gargalo || '',
+    decisor: state.answers.decisor || '',
+    comprometimento: state.answers.comprometimento || '',
+    janela: state.answers.janela || '',
+    referrer: document.referrer || '',
+    userAgent: navigator.userAgent || ''
+  };
+
+  // Content-Type text/plain evita preflight CORS no Apps Script
+  fetch(SHEETS_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload),
+    keepalive: true
+  }).catch(err => console.warn('Sheet webhook falhou:', err));
 }
 
 // ============================================
