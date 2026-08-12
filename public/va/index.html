@@ -10,20 +10,19 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/va/styles-va.css">
 </head>
-<body class="text-slate-100 min-h-screen">
+<body class="text-slate-800 min-h-screen">
 
   <!-- HEADER -->
   <header class="va-header fixed top-0 left-0 right-0 z-50">
     <div class="max-w-2xl mx-auto px-4 py-3 flex items-center gap-3">
-      <div class="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0"
-           style="background: linear-gradient(135deg, var(--va-blue), #1d4ed8);">RK</div>
-      <div class="flex-1 min-w-0">
+      <img src="/va/assets/logo-rk.webp" alt="RK MKT" class="logo-rk flex-shrink-0">
+      <div class="flex-1 min-w-0 border-l pl-3" style="border-color: var(--border-subtle);">
         <p class="text-sm font-bold leading-tight truncate">VAGA · VIRTUAL ASSISTANT</p>
-        <p class="text-xs text-slate-400 leading-tight truncate">Uberlândia/MG · presencial · 18h às 22h</p>
+        <p class="text-xs text-slate-600 leading-tight truncate">Uberlândia/MG · presencial · 18h às 22h</p>
       </div>
       <span id="step-label" class="text-xs text-slate-500 hidden sm:inline"></span>
     </div>
-    <div class="h-1 bg-slate-900">
+    <div id="progress-track" class="h-1">
       <div id="progress-bar" class="h-1 transition-all duration-500" style="width: 0%"></div>
     </div>
   </header>
@@ -34,56 +33,58 @@
     <!-- TELA 01 — INTRO / A VAGA                                     -->
     <!-- ============================================================ -->
     <section id="screen-01" class="screen">
-      <span class="badge badge-gold mb-4 inline-block">Processo seletivo aberto</span>
+      <img src="/va/assets/logo-rk.webp" alt="RK MKT" class="w-52 md:w-64 mb-6">
+
+      <span class="badge badge-teal mb-4 inline-block">Processo seletivo aberto</span>
 
       <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
         Você fala inglês e mora em Uberlândia?<br>
-        <span class="va-highlight">Tem uma vaga esperando por você.</span>
+        <span class="rk-highlight">Tem uma vaga esperando por você.</span>
       </h1>
 
-      <p class="text-slate-300 text-lg mb-4 leading-relaxed">
-        Somos a <strong class="text-white">RK Pulse Digital</strong> — uma agência com sede física em
-        <strong class="text-white">Uberlândia/MG</strong> e clientes nos <strong class="text-white">Estados Unidos</strong>.
+      <p class="text-slate-700 text-lg mb-4 leading-relaxed">
+        Somos a <strong class="text-slate-900">RK Pulse Digital</strong> — uma agência com sede física em
+        <strong class="text-slate-900">Uberlândia/MG</strong> e clientes nos <strong class="text-slate-900">Estados Unidos</strong>.
       </p>
-      <p class="text-slate-400 mb-6 leading-relaxed">
+      <p class="text-slate-600 mb-6 leading-relaxed">
         Nossos clientes são donos de companhias de <em>home improvement</em> na Flórida e outros estados:
         pintura, limpeza, construção, pavers, roofing. A gente gera os clientes para eles.
-        E agora precisamos de quem <span class="va-highlight">atenda esses clientes em inglês</span> e agende a visita presencial que fecha o serviço.
+        E agora precisamos de quem <span class="rk-highlight">atenda esses clientes em inglês</span> e agende a visita presencial que fecha o serviço.
       </p>
 
       <div class="info-card mb-6">
-        <p class="text-sm font-bold text-slate-300 mb-4 tracking-wide">RESUMO DA VAGA</p>
-        <ul class="space-y-3 text-slate-300 text-[0.95rem]">
+        <p class="text-sm font-bold text-slate-700 mb-4 tracking-wide">RESUMO DA VAGA</p>
+        <ul class="space-y-3 text-slate-700 text-[0.95rem]">
           <li class="flex items-start gap-3">
-            <span class="va-highlight text-lg leading-none">▸</span>
-            <span><strong class="text-white">Função:</strong> Virtual Assistant (VA) / atendente comercial bilíngue</span>
+            <span class="rk-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-slate-900">Função:</strong> Virtual Assistant (VA) / atendente comercial bilíngue</span>
           </li>
           <li class="flex items-start gap-3">
-            <span class="va-highlight text-lg leading-none">▸</span>
-            <span><strong class="text-white">O que você faz:</strong> atende leads americanos por telefone, SMS e WhatsApp, entende a necessidade e agenda a visita do nosso cliente na casa do <em>home owner</em></span>
+            <span class="rk-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-slate-900">O que você faz:</strong> atende leads americanos por telefone, SMS e WhatsApp, entende a necessidade e agenda a visita do nosso cliente na casa do <em>home owner</em></span>
           </li>
           <li class="flex items-start gap-3">
-            <span class="va-highlight text-lg leading-none">▸</span>
-            <span><strong class="text-white">Onde:</strong> presencial, na nossa sede em Uberlândia/MG</span>
+            <span class="rk-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-slate-900">Onde:</strong> presencial, na nossa sede em Uberlândia/MG</span>
           </li>
           <li class="flex items-start gap-3">
-            <span class="va-highlight text-lg leading-none">▸</span>
-            <span><strong class="text-white">Horário:</strong> segunda a sexta, das <strong class="va-gold-text">18h às 22h</strong> (horário de Brasília) — é o fim de tarde nos EUA, quando o cliente atende</span>
+            <span class="rk-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-slate-900">Horário:</strong> segunda a sexta, das <strong class="rk-highlight">18h às 22h</strong> (horário de Brasília) — é o fim de tarde nos EUA, quando o cliente atende</span>
           </li>
           <li class="flex items-start gap-3">
-            <span class="va-highlight text-lg leading-none">▸</span>
-            <span><strong class="text-white">Requisito inegociável:</strong> inglês fluente <u>de conversação</u> — você vai falar ao telefone o tempo todo</span>
+            <span class="rk-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-slate-900">Requisito inegociável:</strong> inglês fluente <u>de conversação</u> — você vai falar ao telefone o tempo todo</span>
           </li>
         </ul>
       </div>
 
       <div class="story-box mb-6">
-        <p class="text-slate-300 leading-relaxed">
-          Este formulário é o nosso <strong class="text-white">primeiro filtro</strong>. Ele tem perguntas em português
-          e <strong class="va-gold-text">perguntas em inglês que você responde escrevendo</strong>.
-          Leva cerca de <strong class="text-white">6 minutos</strong>.
+        <p class="text-slate-700 leading-relaxed">
+          Este formulário é o nosso <strong class="text-slate-900">primeiro filtro</strong>. Ele tem perguntas em português
+          e <strong class="rk-highlight">perguntas em inglês que você responde escrevendo</strong>.
+          Leva cerca de <strong class="text-slate-900">6 minutos</strong>.
         </p>
-        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
           Seja honesto nas respostas. A gente conversa com todo mundo por telefone <em>em inglês</em> antes de contratar —
           então inflar o nível de inglês aqui só faz você perder o seu tempo e o nosso.
         </p>
@@ -140,7 +141,7 @@
     <section id="screen-03" class="screen hidden" data-auto="true">
       <p class="text-slate-500 text-sm mb-2">Passo 2 · Localização</p>
       <h2 class="text-2xl md:text-3xl font-bold mb-2">Onde você mora hoje?</h2>
-      <p class="text-slate-400 mb-6">A vaga é <strong class="text-white">presencial na nossa sede em Uberlândia</strong>. Não trabalhamos com home office nessa função.</p>
+      <p class="text-slate-600 mb-6">A vaga é <strong class="text-slate-900">presencial na nossa sede em Uberlândia</strong>. Não trabalhamos com home office nessa função.</p>
 
       <div class="space-y-2" data-question="moradia" data-type="single" data-required>
         <button class="option-btn" data-value="uberlandia">Moro em Uberlândia/MG</button>
@@ -156,7 +157,7 @@
     <section id="screen-04" class="screen hidden" data-auto="true">
       <p class="text-slate-500 text-sm mb-2">Passo 3 · Presencial</p>
       <h2 class="text-2xl md:text-3xl font-bold mb-2">Você consegue trabalhar presencialmente, na nossa sede, todos os dias úteis?</h2>
-      <p class="text-slate-400 mb-6">O time trabalha junto, na mesma sala, com headset. É assim que a gente treina, corrige e melhora o atendimento em tempo real.</p>
+      <p class="text-slate-600 mb-6">O time trabalha junto, na mesma sala, com headset. É assim que a gente treina, corrige e melhora o atendimento em tempo real.</p>
 
       <div class="space-y-2" data-question="presencial" data-type="single" data-required>
         <button class="option-btn" data-value="sim">Sim, sem problema nenhum</button>
@@ -169,17 +170,17 @@
     <!-- TELA 05 — NARRATIVA: O TRABALHO DE VERDADE                   -->
     <!-- ============================================================ -->
     <section id="screen-05" class="screen hidden">
-      <span class="badge badge-blue mb-4 inline-block">Antes de continuar</span>
+      <span class="badge badge-teal mb-4 inline-block">Antes de continuar</span>
       <h2 class="text-2xl md:text-3xl font-bold mb-6">Deixa eu te contar como é o dia a dia de verdade.</h2>
 
       <div class="story-box">
-        <div class="space-y-4 text-slate-200 leading-relaxed">
+        <div class="space-y-4 text-slate-700 leading-relaxed">
           <p class="narrative-line">Nossos clientes são brasileiros que abriram companhia de serviço nos Estados Unidos: pintura, limpeza, pavers, construção, roofing.</p>
-          <p class="narrative-line">A maior parte deles <strong class="text-white">não fala inglês bem</strong> — e passa o dia inteiro dentro do <em>job</em>, com a mão na massa. Quando o telefone toca, eles não atendem. Quando atendem, travam.</p>
-          <p class="narrative-line">A gente gera a demanda pra eles. O <em>home owner</em> americano preenche um formulário ou liga pedindo um orçamento. <strong class="va-highlight">Esse contato cai pra você.</strong></p>
-          <p class="narrative-line">Seu trabalho é atender rápido, em inglês, entender o que a pessoa precisa, criar valor antes de falar de preço — e <strong class="text-white">agendar a visita presencial</strong> do nosso cliente na casa dela. É na visita que o serviço fecha.</p>
+          <p class="narrative-line">A maior parte deles <strong class="text-slate-900">não fala inglês bem</strong> — e passa o dia inteiro dentro do <em>job</em>, com a mão na massa. Quando o telefone toca, eles não atendem. Quando atendem, travam.</p>
+          <p class="narrative-line">A gente gera a demanda pra eles. O <em>home owner</em> americano preenche um formulário ou liga pedindo um orçamento. <strong class="rk-highlight">Esse contato cai pra você.</strong></p>
+          <p class="narrative-line">Seu trabalho é atender rápido, em inglês, entender o que a pessoa precisa, criar valor antes de falar de preço — e <strong class="text-slate-900">agendar a visita presencial</strong> do nosso cliente na casa dela. É na visita que o serviço fecha.</p>
           <p class="narrative-line">Você não vai bater de porta em porta nem fazer cold call para lista fria. Você atende quem <em>já levantou a mão</em> pedindo orçamento — e faz o follow-up de quem não respondeu ainda.</p>
-          <p class="narrative-line">Por isso o horário é das <strong class="va-gold-text">18h às 22h</strong>: é quando o americano chega em casa e atende o telefone. Se esse horário não cabe na sua vida, é melhor a gente descobrir agora.</p>
+          <p class="narrative-line">Por isso o horário é das <strong class="rk-highlight">18h às 22h</strong>: é quando o americano chega em casa e atende o telefone. Se esse horário não cabe na sua vida, é melhor a gente descobrir agora.</p>
         </div>
       </div>
 
@@ -191,8 +192,8 @@
     <!-- ============================================================ -->
     <section id="screen-06" class="screen hidden" data-auto="true">
       <p class="text-slate-500 text-sm mb-2">Passo 4 · Horário</p>
-      <h2 class="text-2xl md:text-3xl font-bold mb-2">Você tem disponibilidade real de <span class="va-gold-text">segunda a sexta, das 18h às 22h</span>?</h2>
-      <p class="text-slate-400 mb-6">Pensa em faculdade, outro emprego, filhos, transporte de volta pra casa às 22h. Responde pensando na sua rotina real, não na ideal.</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Você tem disponibilidade real de <span class="rk-highlight">segunda a sexta, das 18h às 22h</span>?</h2>
+      <p class="text-slate-600 mb-6">Pensa em faculdade, outro emprego, filhos, transporte de volta pra casa às 22h. Responde pensando na sua rotina real, não na ideal.</p>
 
       <div class="space-y-2" data-question="noturno" data-type="single" data-required>
         <button class="option-btn" data-value="total">Sim — 18h às 22h, todos os dias úteis, sem conflito nenhum</button>
@@ -208,7 +209,7 @@
     <section id="screen-07" class="screen hidden" data-auto="true">
       <p class="text-slate-500 text-sm mb-2">Passo 5 · Fim de semana</p>
       <h2 class="text-2xl md:text-3xl font-bold mb-2">E aos fins de semana, qual sua disponibilidade?</h2>
-      <p class="text-slate-400 mb-6">Sábado é um dos dias em que o americano mais responde. Não é obrigatório para todas as vagas — mas conta pontos e costuma vir com adicional.</p>
+      <p class="text-slate-600 mb-6">Sábado é um dos dias em que o americano mais responde. Não é obrigatório para todas as vagas — mas conta pontos e costuma vir com adicional.</p>
 
       <div class="space-y-2" data-question="fimdesemana" data-type="single" data-required>
         <button class="option-btn" data-value="sab-dom">Tenho disponibilidade aos sábados e domingos</button>
@@ -224,7 +225,7 @@
     <section id="screen-08" class="screen hidden" data-auto="true">
       <p class="text-slate-500 text-sm mb-2">Passo 6 · Inglês</p>
       <h2 class="text-2xl md:text-3xl font-bold mb-2">Como está o seu inglês <u>falado</u>, ao telefone, com um americano nativo?</h2>
-      <p class="text-slate-400 mb-6">Não é leitura, não é prova escrita. É telefone, com ruído, sotaque da Flórida e alguém com pressa do outro lado.</p>
+      <p class="text-slate-600 mb-6">Não é leitura, não é prova escrita. É telefone, com ruído, sotaque da Flórida e alguém com pressa do outro lado.</p>
 
       <div class="space-y-2" data-question="ingles_nivel" data-type="single" data-required>
         <button class="option-btn" data-value="fluente">Fluente — atendo o telefone em inglês hoje, sem travar, e conduzo a conversa</button>
@@ -240,7 +241,7 @@
     <section id="screen-09" class="screen hidden">
       <p class="text-slate-500 text-sm mb-2">Passo 7 · Inglês</p>
       <h2 class="text-2xl md:text-3xl font-bold mb-2">De onde vem o seu inglês?</h2>
-      <p class="text-slate-400 mb-6">Marque tudo que se aplica.</p>
+      <p class="text-slate-600 mb-6">Marque tudo que se aplica.</p>
 
       <div class="space-y-2" data-question="ingles_origem" data-type="multi" data-required>
         <button class="option-btn" data-value="morou-fora">Morei em país de língua inglesa</button>
@@ -277,7 +278,7 @@
     <section id="screen-11" class="screen hidden">
       <p class="text-slate-500 text-sm mb-2">Passo 9 · Ferramentas</p>
       <h2 class="text-2xl md:text-3xl font-bold mb-2">Com quais dessas ferramentas você já trabalhou?</h2>
-      <p class="text-slate-400 mb-6">Não saber nenhuma não elimina ninguém — a gente treina. Só ajuda a calibrar o treinamento.</p>
+      <p class="text-slate-600 mb-6">Não saber nenhuma não elimina ninguém — a gente treina. Só ajuda a calibrar o treinamento.</p>
 
       <div class="space-y-2" data-question="ferramentas" data-type="multi" data-required>
         <button class="option-btn" data-value="crm">CRM (HubSpot, Pipedrive, GoHighLevel, Salesforce, Kommo...)</button>
@@ -296,15 +297,15 @@
     <!-- TELA 12 — AVISO: COMEÇA O TESTE DE INGLÊS                    -->
     <!-- ============================================================ -->
     <section id="screen-12" class="screen hidden">
-      <span class="badge badge-gold mb-4 inline-block">English section</span>
+      <span class="badge badge-teal mb-4 inline-block">English section</span>
       <h2 class="text-2xl md:text-3xl font-bold mb-6">A partir daqui, é em inglês.</h2>
 
       <div class="story-box">
-        <div class="space-y-4 text-slate-200 leading-relaxed">
-          <p class="narrative-line">São <strong class="text-white">4 perguntas rápidas de múltipla escolha</strong> e depois <strong class="text-white">3 respostas que você vai escrever em inglês</strong>.</p>
+        <div class="space-y-4 text-slate-700 leading-relaxed">
+          <p class="narrative-line">São <strong class="text-slate-900">4 perguntas rápidas de múltipla escolha</strong> e depois <strong class="text-slate-900">3 respostas que você vai escrever em inglês</strong>.</p>
           <p class="narrative-line">Não são pegadinhas de gramática. São situações reais que acontecem no telefone com <em>home owner</em> americano todo dia.</p>
-          <p class="narrative-line"><strong class="va-gold-text">Um pedido honesto:</strong> escreva do seu jeito, sem tradutor e sem IA. A gente lê tudo, e depois faz uma ligação em inglês com quem passar. Se o texto não bater com a ligação, o processo acaba ali.</p>
-          <p class="narrative-line">Erro de gramática não elimina ninguém. O que a gente quer ver é se você <strong class="text-white">conduz uma conversa e fecha um agendamento</strong>.</p>
+          <p class="narrative-line"><strong class="rk-highlight">Um pedido honesto:</strong> escreva do seu jeito, sem tradutor e sem IA. A gente lê tudo, e depois faz uma ligação em inglês com quem passar. Se o texto não bater com a ligação, o processo acaba ali.</p>
+          <p class="narrative-line">Erro de gramática não elimina ninguém. O que a gente quer ver é se você <strong class="text-slate-900">conduz uma conversa e fecha um agendamento</strong>.</p>
         </div>
       </div>
 
@@ -318,8 +319,8 @@
       <p class="text-slate-500 text-sm mb-2">Quick English check · 1 of 4</p>
       <div class="english-block mb-6">
         <h2 class="text-xl md:text-2xl font-bold mb-2">A homeowner tells you on the phone:</h2>
-        <p class="text-slate-300 text-lg italic">"Sure, can you swing by tomorrow morning?"</p>
-        <p class="text-slate-400 mt-3">What does she mean?</p>
+        <p class="text-slate-700 text-lg italic">"Sure, can you swing by tomorrow morning?"</p>
+        <p class="text-slate-600 mt-3">What does she mean?</p>
       </div>
 
       <div class="space-y-2" data-question="en_q1" data-type="single" data-required>
@@ -337,8 +338,8 @@
       <p class="text-slate-500 text-sm mb-2">Quick English check · 2 of 4</p>
       <div class="english-block mb-6">
         <h2 class="text-xl md:text-2xl font-bold mb-2">You call a lead and he says:</h2>
-        <p class="text-slate-300 text-lg italic">"I'm driving right now — give me a ring after five, would you?"</p>
-        <p class="text-slate-400 mt-3">What should you do?</p>
+        <p class="text-slate-700 text-lg italic">"I'm driving right now — give me a ring after five, would you?"</p>
+        <p class="text-slate-600 mt-3">What should you do?</p>
       </div>
 
       <div class="space-y-2" data-question="en_q2" data-type="single" data-required>
@@ -356,7 +357,7 @@
       <p class="text-slate-500 text-sm mb-2">Quick English check · 3 of 4</p>
       <div class="english-block mb-6">
         <h2 class="text-xl md:text-2xl font-bold mb-2">Complete the sentence:</h2>
-        <p class="text-slate-300 text-lg italic">"I'd be happy to _______ an appointment for our estimator to come out and take a look at the house."</p>
+        <p class="text-slate-700 text-lg italic">"I'd be happy to _______ an appointment for our estimator to come out and take a look at the house."</p>
       </div>
 
       <div class="space-y-2" data-question="en_q3" data-type="single" data-required>
@@ -374,8 +375,8 @@
       <p class="text-slate-500 text-sm mb-2">Quick English check · 4 of 4</p>
       <div class="english-block mb-6">
         <h2 class="text-xl md:text-2xl font-bold mb-2">After hearing the price, the homeowner says:</h2>
-        <p class="text-slate-300 text-lg italic">"Hmm... that's a little steep."</p>
-        <p class="text-slate-400 mt-3">He means that:</p>
+        <p class="text-slate-700 text-lg italic">"Hmm... that's a little steep."</p>
+        <p class="text-slate-600 mt-3">He means that:</p>
       </div>
 
       <div class="space-y-2" data-question="en_q4" data-type="single" data-required>
@@ -393,7 +394,7 @@
       <p class="text-slate-500 text-sm mb-2">Written English · 1 of 3</p>
       <div class="english-block mb-6">
         <h2 class="text-xl md:text-2xl font-bold mb-2">Introduce yourself in English.</h2>
-        <p class="text-slate-400">Imagine this is the first minute of a job interview in English. Tell us who you are, where your English comes from, and why you'd be good at talking to customers on the phone. 3 to 6 sentences.</p>
+        <p class="text-slate-600">Imagine this is the first minute of a job interview in English. Tell us who you are, where your English comes from, and why you'd be good at talking to customers on the phone. 3 to 6 sentences.</p>
       </div>
 
       <div class="field" data-question="en_write_intro" data-type="textarea" data-required data-min="180">
@@ -411,14 +412,14 @@
     <section id="screen-18" class="screen hidden">
       <p class="text-slate-500 text-sm mb-2">Written English · 2 of 3</p>
       <div class="english-block mb-6">
-        <span class="badge badge-blue mb-3 inline-block">Roleplay</span>
+        <span class="badge badge-teal mb-3 inline-block">Roleplay</span>
         <h2 class="text-xl md:text-2xl font-bold mb-2">Book the appointment.</h2>
-        <p class="text-slate-400 leading-relaxed">
+        <p class="text-slate-600 leading-relaxed">
           Sarah, a homeowner in Orlando, filled out a form asking for a quote to repaint the exterior of her house.
           You are calling her for the first time, on behalf of <em>Jackson's Painting</em>.
         </p>
-        <p class="text-slate-400 mt-3 leading-relaxed">
-          Write <strong class="text-white">exactly what you would say</strong>, word for word — from "hello" until you have the
+        <p class="text-slate-600 mt-3 leading-relaxed">
+          Write <strong class="text-slate-900">exactly what you would say</strong>, word for word — from "hello" until you have the
           in-person estimate scheduled. Write it as a phone call, not as an email.
         </p>
       </div>
@@ -438,12 +439,12 @@
     <section id="screen-19" class="screen hidden">
       <p class="text-slate-500 text-sm mb-2">Written English · 3 of 3</p>
       <div class="english-block mb-6">
-        <span class="badge badge-gold mb-3 inline-block">Objection</span>
+        <span class="badge badge-amber mb-3 inline-block">Objection</span>
         <h2 class="text-xl md:text-2xl font-bold mb-2">Sarah pushes back.</h2>
-        <p class="text-slate-300 text-lg italic mb-3">
+        <p class="text-slate-700 text-lg italic mb-3">
           "Thank you, but I already got a quote from another company and it was a lot cheaper. I don't think I need the visit."
         </p>
-        <p class="text-slate-400">Your goal is still to get the in-person visit scheduled. Write your reply, word for word.</p>
+        <p class="text-slate-600">Your goal is still to get the in-person visit scheduled. Write your reply, word for word.</p>
       </div>
 
       <div class="field" data-question="en_write_objecao" data-type="textarea" data-required data-min="220">
@@ -461,10 +462,10 @@
     <section id="screen-20" class="screen hidden">
       <p class="text-slate-500 text-sm mb-2">Passo 10 · Remuneração</p>
       <h2 class="text-2xl md:text-3xl font-bold mb-2">Vamos falar de dinheiro, sem rodeio.</h2>
-      <p class="text-slate-400 mb-6">Responder aqui não te elimina. Preferimos alinhar expectativa agora do que na terceira entrevista.</p>
+      <p class="text-slate-600 mb-6">Responder aqui não te elimina. Preferimos alinhar expectativa agora do que na terceira entrevista.</p>
 
       <div class="field" data-question="pretensao" data-type="single" data-required>
-        <label class="field-label">Qual sua pretensão de <strong class="text-white">salário fixo mensal</strong> para essa jornada (20h por semana, 18h–22h)?</label>
+        <label class="field-label">Qual sua pretensão de <strong class="text-slate-900">salário fixo mensal</strong> para essa jornada (20h por semana, 18h–22h)?</label>
         <div class="space-y-2">
           <button class="option-btn" data-value="ate-1500">Até R$ 1.500</button>
           <button class="option-btn" data-value="1500-2000">R$ 1.500 a R$ 2.000</button>
@@ -536,7 +537,7 @@
         </div>
         <h2 class="text-2xl font-bold mb-4">Analisando sua candidatura...</h2>
         <div id="loading-rotator" class="min-h-[3rem]">
-          <p class="text-slate-400 transition-opacity duration-300">Conferindo disponibilidade e localização...</p>
+          <p class="text-slate-600 transition-opacity duration-300">Conferindo disponibilidade e localização...</p>
         </div>
       </div>
     </section>
@@ -551,17 +552,17 @@
       </div>
 
       <div class="story-box mb-6">
-        <p id="resultado-texto" class="text-slate-200 leading-relaxed"></p>
+        <p id="resultado-texto" class="text-slate-700 leading-relaxed"></p>
       </div>
 
       <div id="resultado-proximos" class="info-card mb-6 hidden">
-        <p class="text-sm font-bold text-slate-300 mb-4 tracking-wide">PRÓXIMO PASSO — E É ELIMINATÓRIO</p>
-        <ol class="space-y-3 text-slate-300 text-[0.95rem] list-decimal list-inside">
+        <p class="text-sm font-bold text-slate-700 mb-4 tracking-wide">PRÓXIMO PASSO — E É ELIMINATÓRIO</p>
+        <ol class="space-y-3 text-slate-700 text-[0.95rem] list-decimal list-inside">
           <li>Clique no botão abaixo — ele abre o WhatsApp do nosso RH com sua candidatura já preenchida.</li>
           <li>Envie a mensagem.</li>
-          <li>Grave e envie <strong class="text-white">um áudio de até 1 minuto, falando em inglês</strong>, respondendo: <em class="va-gold-text">"Tell me about yourself and why you want to work with American customers."</em></li>
+          <li>Grave e envie <strong class="text-slate-900">um áudio de até 1 minuto, falando em inglês</strong>, respondendo: <em class="rk-highlight">"Tell me about yourself and why you want to work with American customers."</em></li>
         </ol>
-        <p class="text-slate-400 text-sm mt-4 leading-relaxed">
+        <p class="text-slate-600 text-sm mt-4 leading-relaxed">
           Sem o áudio, a candidatura não avança — é a forma mais rápida de a gente ouvir seu inglês falado.
           Grave de uma vez só, sem ler texto pronto. A gente percebe.
         </p>
@@ -581,23 +582,23 @@
     <!-- ============================================================ -->
     <section id="screen-banco" class="screen hidden">
       <div class="text-center mb-6">
-        <span class="badge badge-gold mb-4 inline-block">Obrigado pela sinceridade</span>
+        <span class="badge badge-amber mb-4 inline-block">Obrigado pela sinceridade</span>
         <h2 class="text-2xl md:text-3xl font-bold mb-4">Pra <em>essa</em> vaga, agora, não bate.</h2>
       </div>
 
       <div class="story-box mb-6">
-        <p id="banco-motivo" class="text-slate-200 leading-relaxed mb-4"></p>
-        <p class="text-slate-300 leading-relaxed">
+        <p id="banco-motivo" class="text-slate-700 leading-relaxed mb-4"></p>
+        <p class="text-slate-700 leading-relaxed">
           Isso não é um julgamento sobre você — é só um requisito duro dessa posição específica.
-          Guardamos seus dados no nosso <strong class="text-white">banco de talentos</strong> e chamamos
+          Guardamos seus dados no nosso <strong class="text-slate-900">banco de talentos</strong> e chamamos
           quando abrir uma vaga com outro formato (outro horário, outro nível de inglês, outra função).
         </p>
       </div>
 
       <div class="info-card">
-        <p class="text-slate-300 leading-relaxed text-[0.95rem]">
-          <strong class="va-highlight">Uma dica prática:</strong> o que mais destrava candidatos nessa vaga é
-          <strong class="text-white">inglês falado ao telefone</strong>. Se essa for a sua barreira, treine conversação
+        <p class="text-slate-700 leading-relaxed text-[0.95rem]">
+          <strong class="rk-highlight">Uma dica prática:</strong> o que mais destrava candidatos nessa vaga é
+          <strong class="text-slate-900">inglês falado ao telefone</strong>. Se essa for a sua barreira, treine conversação
           (não gramática) por alguns meses e volte aqui. A gente contrata em ciclos.
         </p>
       </div>

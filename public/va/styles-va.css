@@ -1,43 +1,52 @@
 /* ============================================
-   RK Pulse Digital — Recrutamento VA
-   Base navy (mesma identidade do quizz de vendas),
-   porém com acento AZUL/DOURADO pra separar
-   "página de carreira" de "página de oferta".
+   RK MKT — Recrutamento VA
+   Identidade da marca: branco + verde/turquesa da logo.
+   Tons extraídos direto de assets/LOGO RK.png.
    ============================================ */
 :root {
-  --bg-deep: #060d1f;
-  --bg-card: #0e162e;
-  --bg-card-hover: #15203f;
-  --border-subtle: #1d2746;
-  --border-strong: #2a3658;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
+  /* Verdes da marca */
+  --rk-teal:        #009080;  /* verde núcleo da logo */
+  --rk-teal-bright: #00e0d0;  /* turquesa do foguete — só decoração */
+  --rk-teal-mid:    #00a090;
+  --rk-teal-deep:   #00786b;  /* 5.4:1 no branco — ok pra texto */
+  --rk-teal-text:   #00695d;  /* 6.6:1 no branco — links e destaques */
+  --rk-teal-darker: #004f46;
 
-  --va-blue: #2563eb;
-  --va-blue-light: #60a5fa;
-  --va-blue-glow: rgba(37, 99, 235, 0.45);
-  --va-gold: #f59e0b;
-  --va-gold-light: #fbbf24;
-  --va-green: #16a34a;
-  --va-red: #dc2626;
+  /* Fundos e superfícies */
+  --bg-page:   #ffffff;
+  --bg-soft:   #f6fbfa;       /* branco levemente esverdeado */
+  --bg-card:   #ffffff;
+  --bg-tint:   #eafaf7;       /* verde bem lavado, pra blocos */
+
+  /* Bordas */
+  --border-subtle: #e2e8f0;
+  --border-tint:   #c7ece6;
+  --border-strong: #94a3b8;
+
+  /* Texto (todos AA no branco) */
+  --text-primary:   #1e293b;  /* 14.6:1 */
+  --text-secondary: #475569;  /* 7.6:1  */
+  --text-muted:     #64748b;  /* 4.8:1  */
+
+  --danger: #dc2626;
 }
 
 body {
-  background-color: var(--bg-deep);
+  background-color: var(--bg-page);
   background-image:
-    radial-gradient(at 15% 0%, rgba(37, 99, 235, 0.16) 0, transparent 55%),
-    radial-gradient(at 85% 100%, rgba(245, 158, 11, 0.07) 0, transparent 50%);
+    radial-gradient(at 12% 0%,   rgba(0, 224, 208, 0.14) 0, transparent 45%),
+    radial-gradient(at 88% 100%, rgba(0, 144, 128, 0.10) 0, transparent 45%);
   background-attachment: fixed;
+  color: var(--text-primary);
   scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-color: var(--border-tint) transparent;
 }
 
 /* ============================================
    Header
    ============================================ */
 .va-header {
-  background: rgba(6, 13, 31, 0.92);
+  background: rgba(255, 255, 255, 0.93);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -45,13 +54,19 @@ body {
   content: '';
   display: block;
   height: 3px;
-  background: linear-gradient(90deg, var(--va-blue) 0%, #f8fafc 50%, var(--va-gold) 100%);
-  opacity: 0.6;
+  background: linear-gradient(90deg, var(--rk-teal-darker) 0%, var(--rk-teal) 45%, var(--rk-teal-bright) 100%);
 }
 
+.logo-rk {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+#progress-track { background: #e8eef0; }
+
 #progress-bar {
-  background: linear-gradient(90deg, var(--va-blue) 0%, var(--va-blue-light) 100%);
-  box-shadow: 0 0 12px var(--va-blue-glow);
+  background: linear-gradient(90deg, var(--rk-teal) 0%, var(--rk-teal-bright) 100%);
 }
 
 /* ============================================
@@ -82,50 +97,54 @@ body {
   font-weight: 500;
   font-family: inherit;
   line-height: 1.45;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
 }
 .option-btn:hover {
-  background-color: var(--bg-card-hover);
-  border-color: var(--va-blue);
+  background-color: var(--bg-tint);
+  border-color: var(--rk-teal);
   transform: translateX(2px);
+  box-shadow: 0 4px 12px -4px rgba(0, 144, 128, 0.3);
 }
 .option-btn.selected {
-  border-color: var(--va-blue);
-  background-color: rgba(37, 99, 235, 0.14);
-  box-shadow: inset 4px 0 0 var(--va-blue);
+  border-color: var(--rk-teal);
+  background-color: var(--bg-tint);
+  box-shadow: inset 4px 0 0 var(--rk-teal), 0 4px 12px -4px rgba(0, 144, 128, 0.3);
+  color: var(--rk-teal-darker);
+  font-weight: 600;
 }
 
 /* ============================================
    CTAs
    ============================================ */
 .cta-primary {
-  background: linear-gradient(135deg, var(--va-blue) 0%, #1d4ed8 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--rk-teal-deep) 0%, var(--rk-teal-darker) 100%);
+  color: #ffffff;
   font-weight: 700;
   letter-spacing: 0.01em;
-  box-shadow: 0 6px 22px -6px var(--va-blue-glow);
+  box-shadow: 0 6px 20px -6px rgba(0, 120, 107, 0.55);
   transition: all 0.2s;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: none;
   cursor: pointer;
   font-family: inherit;
 }
 .cta-primary:hover {
-  background: linear-gradient(135deg, #3b82f6 0%, var(--va-blue) 100%);
+  background: linear-gradient(135deg, var(--rk-teal) 0%, var(--rk-teal-deep) 100%);
   transform: translateY(-1px);
-  box-shadow: 0 10px 28px -6px var(--va-blue-glow);
+  box-shadow: 0 12px 28px -8px rgba(0, 144, 128, 0.6);
 }
 .cta-primary:active { transform: scale(0.97); }
 
 .whatsapp-cta {
   background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-  color: white;
+  color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 10px 30px -10px rgba(34, 197, 94, 0.6);
+  box-shadow: 0 10px 26px -10px rgba(21, 128, 61, 0.65);
   transition: all 0.2s;
   display: block;
 }
 .whatsapp-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 40px -10px rgba(34, 197, 94, 0.8);
+  box-shadow: 0 15px 36px -10px rgba(21, 128, 61, 0.8);
 }
 .whatsapp-cta:active { transform: scale(0.97); }
 
@@ -160,15 +179,16 @@ body {
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
 }
 .field-input::placeholder,
-.field-textarea::placeholder { color: #64748b; }
+.field-textarea::placeholder { color: #94a3b8; }
 
 .field-input:focus,
 .field-textarea:focus {
   outline: none;
-  border-color: var(--va-blue);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+  border-color: var(--rk-teal);
+  box-shadow: 0 0 0 3px rgba(0, 144, 128, 0.16);
 }
 
 .field-textarea {
@@ -179,14 +199,15 @@ body {
 
 .field-error {
   font-size: 0.8rem;
-  color: #fca5a5;
+  color: var(--danger);
   margin-top: 0.4rem;
+  font-weight: 500;
 }
 .field-error.hidden { display: none; }
 
 .field.invalid .field-input,
 .field.invalid .field-textarea {
-  border-color: var(--va-red);
+  border-color: var(--danger);
 }
 
 .char-counter {
@@ -195,14 +216,14 @@ body {
   text-align: right;
   margin-top: 0.3rem;
 }
-.char-counter.ok { color: #4ade80; }
+.char-counter.ok { color: var(--rk-teal-text); font-weight: 600; }
 
 /* ============================================
-   Blocos de narrativa / caixas
+   Blocos de conteúdo
    ============================================ */
 .story-box {
-  background: linear-gradient(180deg, rgba(37, 99, 235, 0.07) 0%, rgba(245, 158, 11, 0.04) 100%);
-  border: 1px solid var(--border-subtle);
+  background: linear-gradient(180deg, var(--bg-tint) 0%, var(--bg-soft) 100%);
+  border: 1px solid var(--border-tint);
   border-radius: 1rem;
   padding: 1.5rem;
 }
@@ -228,6 +249,7 @@ body {
   border: 1px solid var(--border-subtle);
   border-radius: 1rem;
   padding: 1.25rem;
+  box-shadow: 0 4px 16px -8px rgba(15, 23, 42, 0.15);
 }
 
 .badge {
@@ -239,16 +261,15 @@ body {
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
 }
-.badge-blue  { background: rgba(37, 99, 235, 0.18); color: var(--va-blue-light); }
-.badge-gold  { background: rgba(245, 158, 11, 0.16); color: var(--va-gold-light); }
-.badge-green { background: rgba(22, 163, 74, 0.18); color: #4ade80; }
+.badge-teal  { background: var(--bg-tint); color: var(--rk-teal-darker); border: 1px solid var(--border-tint); }
+.badge-green { background: #dcfce7; color: #14532d; border: 1px solid #bbf7d0; }
+.badge-amber { background: #fef3c7; color: #78350f; border: 1px solid #fde68a; }
 
-.va-highlight { color: var(--va-blue-light); font-weight: 700; }
-.va-gold-text { color: var(--va-gold-light); font-weight: 700; }
+.rk-highlight { color: var(--rk-teal-text); font-weight: 700; }
 
-/* Bloco em inglês — sinaliza visualmente a troca de idioma */
+/* Bloco em inglês — sinaliza a troca de idioma */
 .english-block {
-  border-left: 3px solid var(--va-gold);
+  border-left: 3px solid var(--rk-teal);
   padding-left: 1rem;
 }
 
@@ -256,7 +277,7 @@ body {
    Loading
    ============================================ */
 .loading-dots span {
-  background-color: var(--va-blue-light);
+  background-color: var(--rk-teal);
   animation: bounce 1.4s infinite ease-in-out both;
 }
 .loading-dots span:nth-child(1) { animation-delay: -0.32s; }

@@ -372,7 +372,7 @@ function renderizarResultado(tier) {
 
   const badge = document.getElementById('resultado-badge');
   badge.className = 'badge mb-4 inline-block ' +
-    (tier === 'A' ? 'badge-green' : tier === 'B' ? 'badge-blue' : 'badge-gold');
+    (tier === 'A' ? 'badge-green' : tier === 'B' ? 'badge-teal' : 'badge-amber');
 
   const proximos = document.getElementById('resultado-proximos');
   const btn = document.getElementById('whatsapp-btn');

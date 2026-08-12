@@ -48,8 +48,25 @@ Segundo quizz, hospedado no **mesmo projeto Vercel**, na rota `/va`. Serve pra r
 VAs (atendentes comerciais bilíngues) que trabalha presencialmente em Uberlândia/MG, das 18h às 22h,
 atendendo os clientes americanos dos nossos clientes.
 
-Arquivos: `public/va/index.html`, `public/va/quizz-va.js`, `public/va/styles-va.css`.
-É **independente** do quizz de vendas — não compartilha CSS, JS nem webhook.
+Arquivos: `public/va/index.html`, `public/va/quizz-va.js`, `public/va/styles-va.css`,
+`public/va/assets/logo-rk.webp`. É **independente** do quizz de vendas — não compartilha CSS,
+JS, assets nem webhook.
+
+## Identidade visual
+Branco + verde da marca. Os tons saíram direto de `assets/LOGO RK.png` (amostragem dos pixels),
+e todos os textos passam em AA de contraste no fundo branco:
+
+| Token | Hex | Uso |
+|---|---|---|
+| `--rk-teal` | `#009080` | verde núcleo da logo — bordas, ícones, seleção |
+| `--rk-teal-bright` | `#00e0d0` | turquesa do foguete — só gradiente/decoração |
+| `--rk-teal-deep` / `--rk-teal-darker` | `#00786b` / `#004f46` | gradiente dos CTAs (branco por cima = 5.4:1 e 9.5:1) |
+| `--rk-teal-text` | `#00695d` | destaques e links (6.6:1 no branco) |
+| `--bg-tint` | `#eafaf7` | fundo dos blocos de destaque |
+
+O âmbar sobrou só em dois lugares de alerta (roleplay de objeção e banco de talentos); todo o
+resto do fluxo é verde. O botão do WhatsApp segue no verde do WhatsApp de propósito — é sinal
+de plataforma, não da marca.
 
 ## Como funciona
 23 telas. Requisitos inegociáveis são **knockout**: se o candidato marcar a opção eliminatória, ele
