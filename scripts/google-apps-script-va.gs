@@ -66,7 +66,7 @@ const HEADERS = [
 function doPost(e) {
   try {
     const sheet = pegarAba();
-    const data = JSON.parse(e.postData.contents);
+    const data = lerPayload(e);
 
     // Clique no WhatsApp: só marca a coluna de áudio da linha do candidato
     if (data.status === 'audio-solicitado') {
@@ -152,6 +152,15 @@ function pegarAba() {
   }
 
   return sheet;
+}
+
+/**
+ * O quizz envia form-urlencoded (evita preflight CORS), mas aceitamos
+ * JSON também — assim o mesmo script serve pra qualquer origem.
+ */
+function lerPayload(e) {
+  if (e.parameter && Object.keys(e.parameter).length > 0) return e.parameter;
+  return JSON.parse(e.postData.contents);
 }
 
 function lista(v) {

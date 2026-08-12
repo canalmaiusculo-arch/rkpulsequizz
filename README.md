@@ -81,7 +81,25 @@ Há uma trava: inglês "intermediário" ou 0–1 acertos no *English check* nunc
 Tudo em `public/va/quizz-va.js`, no topo do arquivo:
 
 - `WHATSAPP_RH` — número do RH em Uberlândia (DDI+DDD, só números). **Está vazio de propósito.** Enquanto ficar vazio, a tela de resultado esconde o botão e a tarefa do áudio, e o rodapé avisa que o RH entra em contato. Basta preencher pra reativar o CTA — nada mais precisa mudar.
-- `SHEETS_WEBHOOK_URL` — Web App do Apps Script de recrutamento (**deploy separado** do de vendas; passo a passo em `scripts/google-apps-script-va.gs`). Vazio = não salva.
+- `WEBHOOK_URL` — já apontando pro **Catch Hook do Zapier**. Se um dia quiser trocar por Google Sheets direto, use o Apps Script de `scripts/google-apps-script-va.gs` (deploy separado do de vendas) — ele aceita os dois formatos.
+
+## Como as respostas chegam
+Cada candidatura é um POST **`application/x-www-form-urlencoded`** com 32 campos nomeados
+(`status`, `tier`, `pontuacao`, `acertos_ingles`, `nome`, `whatsapp`, `email`, `en_write_intro`,
+`en_write_roleplay`, `en_write_objecao`, `pretensao`...). Arrays (`ingles_origem`, `ferramentas`)
+chegam como texto separado por vírgula.
+
+Form-encoded é proposital: o hook do Zapier responde ao preflight sem
+`access-control-allow-headers`, então `application/json` seria barrado pelo navegador.
+Form-encoded é *simple request* — não gera preflight — e o Zapier já parseia em campos nomeados.
+
+O campo `status` diz em que ponto o candidato saiu:
+
+| `status` | Significa |
+|---|---|
+| `completo` | terminou o formulário (veja `tier` e `pontuacao`) |
+| `desqualificado` | bateu num knockout (veja `motivo_desqualificacao`) |
+| `audio-solicitado` | clicou no botão do WhatsApp pra mandar o áudio |
 
 E em `public/va/index.html`: as faixas de **pretensão salarial** (tela 20) e a jornada de 20h/semana,
 se os seus números forem outros. As faixas atuais (R$1.500 a R$4.000+) são um chute de mercado.

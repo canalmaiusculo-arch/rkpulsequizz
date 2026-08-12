@@ -21,10 +21,15 @@ const SCREEN_RESULTADO = 23;
 // Basta preencher aqui pra reativar o CTA (nada mais precisa mudar).
 const WHATSAPP_RH = '';
 
-// ⚠️ URL do Web App do Apps Script do RECRUTAMENTO (é OUTRO deploy,
-// separado do quizz de vendas). Passo a passo em
+// Webhook que recebe as candidaturas. Hoje: Zapier (Catch Hook).
+// Também funciona com o Web App do Apps Script em
 // scripts/google-apps-script-va.gs. Vazio = não envia (não quebra nada).
-const SHEETS_WEBHOOK_URL = '';
+//
+// O envio é feito como application/x-www-form-urlencoded de propósito:
+// o hook do Zapier não devolve `access-control-allow-headers`, então
+// application/json seria barrado no preflight do navegador. Form-encoded
+// é "simple request" (sem preflight) e o Zapier parseia em campos nomeados.
+const WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/25269393/46vwyd7/';
 
 // ============================================================
 // MENSAGENS DA TELA DE LOADING
@@ -468,16 +473,11 @@ function trackAplicacao() {
 // ENVIO PRA GOOGLE SHEET
 // ============================================================
 function enviarParaSheet(status, tier, motivoKO) {
-  if (!SHEETS_WEBHOOK_URL) return;
+  if (!WEBHOOK_URL) return;
 
   // evita linha duplicada quando o candidato clica no WhatsApp
   if (status === 'audio-solicitado' && state.enviado) {
-    fetch(SHEETS_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({ status, nome: state.answers.nome || '', whatsapp: state.answers.whatsapp || '' }),
-      keepalive: true
-    }).catch(err => console.warn('Sheet webhook falhou:', err));
+    postar({ status, nome: state.answers.nome || '', whatsapp: state.answers.whatsapp || '' });
     return;
   }
 
@@ -520,14 +520,25 @@ function enviarParaSheet(status, tier, motivoKO) {
   };
 
   state.enviado = true;
+  postar(payload);
+}
 
-  // text/plain evita preflight CORS no Apps Script
-  fetch(SHEETS_WEBHOOK_URL, {
+// Envia como form-urlencoded (simple request, sem preflight CORS).
+// Arrays viram string separada por vírgula pra cair bonito na planilha.
+function postar(payload) {
+  const form = new URLSearchParams();
+
+  Object.keys(payload).forEach(chave => {
+    const valor = payload[chave];
+    form.append(chave, Array.isArray(valor) ? valor.join(', ') : String(valor ?? ''));
+  });
+
+  fetch(WEBHOOK_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify(payload),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+    body: form.toString(),
     keepalive: true
-  }).catch(err => console.warn('Sheet webhook falhou:', err));
+  }).catch(err => console.warn('Webhook falhou:', err));
 }
 
 // ============================================================
