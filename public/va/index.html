@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vaga de Virtual Assistant (atendimento comercial em inglês) na RK Pulse Digital — Uberlândia/MG, presencial, período noturno. Aplicação em 6 minutos.">
+  <meta name="robots" content="noindex">
+  <title>Vaga · Virtual Assistant (VA) — RK Pulse Digital · Uberlândia/MG</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/va/styles-va.css">
+</head>
+<body class="text-slate-100 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="va-header fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-2xl mx-auto px-4 py-3 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0"
+           style="background: linear-gradient(135deg, var(--va-blue), #1d4ed8);">RK</div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-bold leading-tight truncate">VAGA · VIRTUAL ASSISTANT</p>
+        <p class="text-xs text-slate-400 leading-tight truncate">Uberlândia/MG · presencial · 18h às 22h</p>
+      </div>
+      <span id="step-label" class="text-xs text-slate-500 hidden sm:inline"></span>
+    </div>
+    <div class="h-1 bg-slate-900">
+      <div id="progress-bar" class="h-1 transition-all duration-500" style="width: 0%"></div>
+    </div>
+  </header>
+
+  <main class="pt-24 pb-16 px-4 max-w-2xl mx-auto">
+
+    <!-- ============================================================ -->
+    <!-- TELA 01 — INTRO / A VAGA                                     -->
+    <!-- ============================================================ -->
+    <section id="screen-01" class="screen">
+      <span class="badge badge-gold mb-4 inline-block">Processo seletivo aberto</span>
+
+      <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
+        Você fala inglês e mora em Uberlândia?<br>
+        <span class="va-highlight">Tem uma vaga esperando por você.</span>
+      </h1>
+
+      <p class="text-slate-300 text-lg mb-4 leading-relaxed">
+        Somos a <strong class="text-white">RK Pulse Digital</strong> — uma agência com sede física em
+        <strong class="text-white">Uberlândia/MG</strong> e clientes nos <strong class="text-white">Estados Unidos</strong>.
+      </p>
+      <p class="text-slate-400 mb-6 leading-relaxed">
+        Nossos clientes são donos de companhias de <em>home improvement</em> na Flórida e outros estados:
+        pintura, limpeza, construção, pavers, roofing. A gente gera os clientes para eles.
+        E agora precisamos de quem <span class="va-highlight">atenda esses clientes em inglês</span> e agende a visita presencial que fecha o serviço.
+      </p>
+
+      <div class="info-card mb-6">
+        <p class="text-sm font-bold text-slate-300 mb-4 tracking-wide">RESUMO DA VAGA</p>
+        <ul class="space-y-3 text-slate-300 text-[0.95rem]">
+          <li class="flex items-start gap-3">
+            <span class="va-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-white">Função:</strong> Virtual Assistant (VA) / atendente comercial bilíngue</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="va-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-white">O que você faz:</strong> atende leads americanos por telefone, SMS e WhatsApp, entende a necessidade e agenda a visita do nosso cliente na casa do <em>home owner</em></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="va-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-white">Onde:</strong> presencial, na nossa sede em Uberlândia/MG</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="va-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-white">Horário:</strong> segunda a sexta, das <strong class="va-gold-text">18h às 22h</strong> (horário de Brasília) — é o fim de tarde nos EUA, quando o cliente atende</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="va-highlight text-lg leading-none">▸</span>
+            <span><strong class="text-white">Requisito inegociável:</strong> inglês fluente <u>de conversação</u> — você vai falar ao telefone o tempo todo</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="story-box mb-6">
+        <p class="text-slate-300 leading-relaxed">
+          Este formulário é o nosso <strong class="text-white">primeiro filtro</strong>. Ele tem perguntas em português
+          e <strong class="va-gold-text">perguntas em inglês que você responde escrevendo</strong>.
+          Leva cerca de <strong class="text-white">6 minutos</strong>.
+        </p>
+        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+          Seja honesto nas respostas. A gente conversa com todo mundo por telefone <em>em inglês</em> antes de contratar —
+          então inflar o nível de inglês aqui só faz você perder o seu tempo e o nosso.
+        </p>
+      </div>
+
+      <button onclick="startQuizz()" class="cta-primary w-full py-4 rounded-xl text-lg">
+        Quero me candidatar →
+      </button>
+      <p class="text-center text-slate-500 text-xs mt-3">6 minutos · resposta em até 5 dias úteis</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 02 — DADOS DE CONTATO                                   -->
+    <!-- ============================================================ -->
+    <section id="screen-02" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Passo 1 · Seus dados</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Primeiro, como a gente te encontra?</h2>
+
+      <div class="field" data-question="nome" data-type="text" data-required data-min="5">
+        <label class="field-label" for="in-nome">Nome completo</label>
+        <input id="in-nome" class="field-input" type="text" placeholder="Nome e sobrenome" autocomplete="name">
+        <p class="field-error hidden"></p>
+      </div>
+
+      <div class="field" data-question="whatsapp" data-type="text" data-required data-format="phone">
+        <label class="field-label" for="in-whats">WhatsApp (com DDD)</label>
+        <input id="in-whats" class="field-input" type="tel" placeholder="(34) 99999-9999" autocomplete="tel" inputmode="tel">
+        <p class="field-error hidden"></p>
+      </div>
+
+      <div class="field" data-question="email" data-type="text" data-required data-format="email">
+        <label class="field-label" for="in-email">E-mail</label>
+        <input id="in-email" class="field-input" type="email" placeholder="seuemail@exemplo.com" autocomplete="email">
+        <p class="field-error hidden"></p>
+      </div>
+
+      <div class="field" data-question="idade" data-type="single" data-required>
+        <label class="field-label">Sua idade</label>
+        <div class="grid grid-cols-2 gap-2">
+          <button class="option-btn" data-value="18-24">18 a 24 anos</button>
+          <button class="option-btn" data-value="25-34">25 a 34 anos</button>
+          <button class="option-btn" data-value="35-44">35 a 44 anos</button>
+          <button class="option-btn" data-value="45+">45 anos ou mais</button>
+        </div>
+        <p class="field-error hidden"></p>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary w-full py-4 rounded-xl text-lg mt-4">Continuar →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 03 — ONDE MORA (KNOCKOUT)                               -->
+    <!-- ============================================================ -->
+    <section id="screen-03" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Passo 2 · Localização</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Onde você mora hoje?</h2>
+      <p class="text-slate-400 mb-6">A vaga é <strong class="text-white">presencial na nossa sede em Uberlândia</strong>. Não trabalhamos com home office nessa função.</p>
+
+      <div class="space-y-2" data-question="moradia" data-type="single" data-required>
+        <button class="option-btn" data-value="uberlandia">Moro em Uberlândia/MG</button>
+        <button class="option-btn" data-value="regiao">Moro na região (até ~40 min de Uberlândia) e consigo vir todo dia</button>
+        <button class="option-btn" data-value="mudando">Moro em outra cidade, mas já estou me mudando pra Uberlândia</button>
+        <button class="option-btn" data-value="outra-cidade">Moro em outra cidade e não pretendo mudar</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 04 — DISPONIBILIDADE PRESENCIAL (KNOCKOUT)              -->
+    <!-- ============================================================ -->
+    <section id="screen-04" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Passo 3 · Presencial</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Você consegue trabalhar presencialmente, na nossa sede, todos os dias úteis?</h2>
+      <p class="text-slate-400 mb-6">O time trabalha junto, na mesma sala, com headset. É assim que a gente treina, corrige e melhora o atendimento em tempo real.</p>
+
+      <div class="space-y-2" data-question="presencial" data-type="single" data-required>
+        <button class="option-btn" data-value="sim">Sim, sem problema nenhum</button>
+        <button class="option-btn" data-value="sim-com-ajuste">Sim, mas preciso ajustar transporte/rotina nas primeiras semanas</button>
+        <button class="option-btn" data-value="so-remoto">Só consigo trabalhar remoto</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 05 — NARRATIVA: O TRABALHO DE VERDADE                   -->
+    <!-- ============================================================ -->
+    <section id="screen-05" class="screen hidden">
+      <span class="badge badge-blue mb-4 inline-block">Antes de continuar</span>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Deixa eu te contar como é o dia a dia de verdade.</h2>
+
+      <div class="story-box">
+        <div class="space-y-4 text-slate-200 leading-relaxed">
+          <p class="narrative-line">Nossos clientes são brasileiros que abriram companhia de serviço nos Estados Unidos: pintura, limpeza, pavers, construção, roofing.</p>
+          <p class="narrative-line">A maior parte deles <strong class="text-white">não fala inglês bem</strong> — e passa o dia inteiro dentro do <em>job</em>, com a mão na massa. Quando o telefone toca, eles não atendem. Quando atendem, travam.</p>
+          <p class="narrative-line">A gente gera a demanda pra eles. O <em>home owner</em> americano preenche um formulário ou liga pedindo um orçamento. <strong class="va-highlight">Esse contato cai pra você.</strong></p>
+          <p class="narrative-line">Seu trabalho é atender rápido, em inglês, entender o que a pessoa precisa, criar valor antes de falar de preço — e <strong class="text-white">agendar a visita presencial</strong> do nosso cliente na casa dela. É na visita que o serviço fecha.</p>
+          <p class="narrative-line">Você não vai bater de porta em porta nem fazer cold call para lista fria. Você atende quem <em>já levantou a mão</em> pedindo orçamento — e faz o follow-up de quem não respondeu ainda.</p>
+          <p class="narrative-line">Por isso o horário é das <strong class="va-gold-text">18h às 22h</strong>: é quando o americano chega em casa e atende o telefone. Se esse horário não cabe na sua vida, é melhor a gente descobrir agora.</p>
+        </div>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary mt-8 w-full py-4 rounded-xl text-lg">Faz sentido, continuar →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 06 — DISPONIBILIDADE NOTURNA (KNOCKOUT)                 -->
+    <!-- ============================================================ -->
+    <section id="screen-06" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Passo 4 · Horário</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Você tem disponibilidade real de <span class="va-gold-text">segunda a sexta, das 18h às 22h</span>?</h2>
+      <p class="text-slate-400 mb-6">Pensa em faculdade, outro emprego, filhos, transporte de volta pra casa às 22h. Responde pensando na sua rotina real, não na ideal.</p>
+
+      <div class="space-y-2" data-question="noturno" data-type="single" data-required>
+        <button class="option-btn" data-value="total">Sim — 18h às 22h, todos os dias úteis, sem conflito nenhum</button>
+        <button class="option-btn" data-value="total-ajuste">Sim, mas preciso de 2 a 4 semanas pra ajustar (aviso prévio, faculdade, etc.)</button>
+        <button class="option-btn" data-value="parcial">Só consigo alguns dias da semana nesse horário</button>
+        <button class="option-btn" data-value="nao">Não consigo trabalhar nesse horário</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 07 — FIM DE SEMANA                                      -->
+    <!-- ============================================================ -->
+    <section id="screen-07" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Passo 5 · Fim de semana</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">E aos fins de semana, qual sua disponibilidade?</h2>
+      <p class="text-slate-400 mb-6">Sábado é um dos dias em que o americano mais responde. Não é obrigatório para todas as vagas — mas conta pontos e costuma vir com adicional.</p>
+
+      <div class="space-y-2" data-question="fimdesemana" data-type="single" data-required>
+        <button class="option-btn" data-value="sab-dom">Tenho disponibilidade aos sábados e domingos</button>
+        <button class="option-btn" data-value="sabado">Sábado sim, domingo não</button>
+        <button class="option-btn" data-value="eventual">Eventualmente, quando for combinado com antecedência</button>
+        <button class="option-btn" data-value="nao">Não tenho disponibilidade em fins de semana</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 08 — NÍVEL DE INGLÊS (KNOCKOUT)                         -->
+    <!-- ============================================================ -->
+    <section id="screen-08" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Passo 6 · Inglês</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Como está o seu inglês <u>falado</u>, ao telefone, com um americano nativo?</h2>
+      <p class="text-slate-400 mb-6">Não é leitura, não é prova escrita. É telefone, com ruído, sotaque da Flórida e alguém com pressa do outro lado.</p>
+
+      <div class="space-y-2" data-question="ingles_nivel" data-type="single" data-required>
+        <button class="option-btn" data-value="fluente">Fluente — atendo o telefone em inglês hoje, sem travar, e conduzo a conversa</button>
+        <button class="option-btn" data-value="avancado">Avançado — me comunico bem, travo em uma palavra ou outra mas resolvo</button>
+        <button class="option-btn" data-value="intermediario">Intermediário — leio e escrevo bem, mas ao telefone eu me perco</button>
+        <button class="option-btn" data-value="basico">Básico — ainda estou aprendendo a conversar</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 09 — BAGAGEM DE INGLÊS                                  -->
+    <!-- ============================================================ -->
+    <section id="screen-09" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Passo 7 · Inglês</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">De onde vem o seu inglês?</h2>
+      <p class="text-slate-400 mb-6">Marque tudo que se aplica.</p>
+
+      <div class="space-y-2" data-question="ingles_origem" data-type="multi" data-required>
+        <button class="option-btn" data-value="morou-fora">Morei em país de língua inglesa</button>
+        <button class="option-btn" data-value="trabalhou-ingles">Já trabalhei atendendo/falando inglês profissionalmente</button>
+        <button class="option-btn" data-value="curso">Curso de idiomas (Wizard, CNA, Cultura Inglesa, etc.)</button>
+        <button class="option-btn" data-value="intercambio">Intercâmbio</button>
+        <button class="option-btn" data-value="certificacao">Tenho certificação (TOEFL, IELTS, Cambridge, TOEIC...)</button>
+        <button class="option-btn" data-value="autodidata">Sou autodidata (séries, games, internet, conversação online)</button>
+        <button class="option-btn" data-value="faculdade">Faculdade de Letras / Tradução</button>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary w-full py-4 rounded-xl text-lg mt-6">Continuar →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 10 — EXPERIÊNCIA COMERCIAL                              -->
+    <!-- ============================================================ -->
+    <section id="screen-10" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Passo 8 · Experiência</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Qual sua experiência com atendimento ou vendas por telefone?</h2>
+
+      <div class="space-y-2" data-question="experiencia" data-type="single" data-required>
+        <button class="option-btn" data-value="vendas-ingles">Já vendi ou agendei em inglês, para clientes no exterior</button>
+        <button class="option-btn" data-value="vendas-telefone">Já trabalhei com vendas/agendamento por telefone (em português)</button>
+        <button class="option-btn" data-value="atendimento">Já trabalhei com atendimento ao cliente / SAC / recepção</button>
+        <button class="option-btn" data-value="outro-comercial">Trabalhei com vendas, mas presencial (loja, balcão, porta a porta)</button>
+        <button class="option-btn" data-value="nenhuma">Nunca trabalhei com atendimento nem vendas</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 11 — FERRAMENTAS                                        -->
+    <!-- ============================================================ -->
+    <section id="screen-11" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Passo 9 · Ferramentas</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Com quais dessas ferramentas você já trabalhou?</h2>
+      <p class="text-slate-400 mb-6">Não saber nenhuma não elimina ninguém — a gente treina. Só ajuda a calibrar o treinamento.</p>
+
+      <div class="space-y-2" data-question="ferramentas" data-type="multi" data-required>
+        <button class="option-btn" data-value="crm">CRM (HubSpot, Pipedrive, GoHighLevel, Salesforce, Kommo...)</button>
+        <button class="option-btn" data-value="discador">Discador / softphone / telefonia VoIP</button>
+        <button class="option-btn" data-value="planilhas">Google Sheets / Excel no dia a dia</button>
+        <button class="option-btn" data-value="agenda">Agendamento online (Google Calendar, Calendly)</button>
+        <button class="option-btn" data-value="whatsapp-business">WhatsApp Business / atendimento por chat em escala</button>
+        <button class="option-btn" data-value="script">Já segui script de atendimento e registrei follow-up</button>
+        <button class="option-btn" data-value="nenhuma" data-exclusive="true">Nenhuma dessas ainda</button>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary w-full py-4 rounded-xl text-lg mt-6">Continuar →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 12 — AVISO: COMEÇA O TESTE DE INGLÊS                    -->
+    <!-- ============================================================ -->
+    <section id="screen-12" class="screen hidden">
+      <span class="badge badge-gold mb-4 inline-block">English section</span>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">A partir daqui, é em inglês.</h2>
+
+      <div class="story-box">
+        <div class="space-y-4 text-slate-200 leading-relaxed">
+          <p class="narrative-line">São <strong class="text-white">4 perguntas rápidas de múltipla escolha</strong> e depois <strong class="text-white">3 respostas que você vai escrever em inglês</strong>.</p>
+          <p class="narrative-line">Não são pegadinhas de gramática. São situações reais que acontecem no telefone com <em>home owner</em> americano todo dia.</p>
+          <p class="narrative-line"><strong class="va-gold-text">Um pedido honesto:</strong> escreva do seu jeito, sem tradutor e sem IA. A gente lê tudo, e depois faz uma ligação em inglês com quem passar. Se o texto não bater com a ligação, o processo acaba ali.</p>
+          <p class="narrative-line">Erro de gramática não elimina ninguém. O que a gente quer ver é se você <strong class="text-white">conduz uma conversa e fecha um agendamento</strong>.</p>
+        </div>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary mt-8 w-full py-4 rounded-xl text-lg">I'm ready →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 13 — ENGLISH CHECK 1/4                                  -->
+    <!-- ============================================================ -->
+    <section id="screen-13" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Quick English check · 1 of 4</p>
+      <div class="english-block mb-6">
+        <h2 class="text-xl md:text-2xl font-bold mb-2">A homeowner tells you on the phone:</h2>
+        <p class="text-slate-300 text-lg italic">"Sure, can you swing by tomorrow morning?"</p>
+        <p class="text-slate-400 mt-3">What does she mean?</p>
+      </div>
+
+      <div class="space-y-2" data-question="en_q1" data-type="single" data-required>
+        <button class="option-btn" data-value="a" data-correct="true">She wants someone to come to her house tomorrow morning</button>
+        <button class="option-btn" data-value="b">She wants to cancel the appointment</button>
+        <button class="option-btn" data-value="c">She is asking for a discount</button>
+        <button class="option-btn" data-value="d">She wants you to send the quote by email</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 14 — ENGLISH CHECK 2/4                                  -->
+    <!-- ============================================================ -->
+    <section id="screen-14" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Quick English check · 2 of 4</p>
+      <div class="english-block mb-6">
+        <h2 class="text-xl md:text-2xl font-bold mb-2">You call a lead and he says:</h2>
+        <p class="text-slate-300 text-lg italic">"I'm driving right now — give me a ring after five, would you?"</p>
+        <p class="text-slate-400 mt-3">What should you do?</p>
+      </div>
+
+      <div class="space-y-2" data-question="en_q2" data-type="single" data-required>
+        <button class="option-btn" data-value="a">Mark him as not interested and move on</button>
+        <button class="option-btn" data-value="b" data-correct="true">Call him back after 5 PM</button>
+        <button class="option-btn" data-value="c">Wait for him to call you back</button>
+        <button class="option-btn" data-value="d">Send him five text messages</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 15 — ENGLISH CHECK 3/4                                  -->
+    <!-- ============================================================ -->
+    <section id="screen-15" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Quick English check · 3 of 4</p>
+      <div class="english-block mb-6">
+        <h2 class="text-xl md:text-2xl font-bold mb-2">Complete the sentence:</h2>
+        <p class="text-slate-300 text-lg italic">"I'd be happy to _______ an appointment for our estimator to come out and take a look at the house."</p>
+      </div>
+
+      <div class="space-y-2" data-question="en_q3" data-type="single" data-required>
+        <button class="option-btn" data-value="a">make out</button>
+        <button class="option-btn" data-value="b" data-correct="true">set up</button>
+        <button class="option-btn" data-value="c">take over</button>
+        <button class="option-btn" data-value="d">put down</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 16 — ENGLISH CHECK 4/4                                  -->
+    <!-- ============================================================ -->
+    <section id="screen-16" class="screen hidden" data-auto="true">
+      <p class="text-slate-500 text-sm mb-2">Quick English check · 4 of 4</p>
+      <div class="english-block mb-6">
+        <h2 class="text-xl md:text-2xl font-bold mb-2">After hearing the price, the homeowner says:</h2>
+        <p class="text-slate-300 text-lg italic">"Hmm... that's a little steep."</p>
+        <p class="text-slate-400 mt-3">He means that:</p>
+      </div>
+
+      <div class="space-y-2" data-question="en_q4" data-type="single" data-required>
+        <button class="option-btn" data-value="a">The job will take too long</button>
+        <button class="option-btn" data-value="b">He didn't understand what you said</button>
+        <button class="option-btn" data-value="c" data-correct="true">He thinks the price is too high</button>
+        <button class="option-btn" data-value="d">The roof of his house is too high</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 17 — WRITTEN ENGLISH 1 (apresentação)                   -->
+    <!-- ============================================================ -->
+    <section id="screen-17" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Written English · 1 of 3</p>
+      <div class="english-block mb-6">
+        <h2 class="text-xl md:text-2xl font-bold mb-2">Introduce yourself in English.</h2>
+        <p class="text-slate-400">Imagine this is the first minute of a job interview in English. Tell us who you are, where your English comes from, and why you'd be good at talking to customers on the phone. 3 to 6 sentences.</p>
+      </div>
+
+      <div class="field" data-question="en_write_intro" data-type="textarea" data-required data-min="180">
+        <textarea class="field-textarea" placeholder="Write your answer in English..." rows="7"></textarea>
+        <div class="char-counter"></div>
+        <p class="field-error hidden"></p>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary w-full py-4 rounded-xl text-lg">Next →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 18 — WRITTEN ENGLISH 2 (roleplay: agendar visita)       -->
+    <!-- ============================================================ -->
+    <section id="screen-18" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Written English · 2 of 3</p>
+      <div class="english-block mb-6">
+        <span class="badge badge-blue mb-3 inline-block">Roleplay</span>
+        <h2 class="text-xl md:text-2xl font-bold mb-2">Book the appointment.</h2>
+        <p class="text-slate-400 leading-relaxed">
+          Sarah, a homeowner in Orlando, filled out a form asking for a quote to repaint the exterior of her house.
+          You are calling her for the first time, on behalf of <em>Jackson's Painting</em>.
+        </p>
+        <p class="text-slate-400 mt-3 leading-relaxed">
+          Write <strong class="text-white">exactly what you would say</strong>, word for word — from "hello" until you have the
+          in-person estimate scheduled. Write it as a phone call, not as an email.
+        </p>
+      </div>
+
+      <div class="field" data-question="en_write_roleplay" data-type="textarea" data-required data-min="280">
+        <textarea class="field-textarea" placeholder="Hi, is this Sarah? ..." rows="9"></textarea>
+        <div class="char-counter"></div>
+        <p class="field-error hidden"></p>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary w-full py-4 rounded-xl text-lg">Next →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 19 — WRITTEN ENGLISH 3 (objeção)                        -->
+    <!-- ============================================================ -->
+    <section id="screen-19" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Written English · 3 of 3</p>
+      <div class="english-block mb-6">
+        <span class="badge badge-gold mb-3 inline-block">Objection</span>
+        <h2 class="text-xl md:text-2xl font-bold mb-2">Sarah pushes back.</h2>
+        <p class="text-slate-300 text-lg italic mb-3">
+          "Thank you, but I already got a quote from another company and it was a lot cheaper. I don't think I need the visit."
+        </p>
+        <p class="text-slate-400">Your goal is still to get the in-person visit scheduled. Write your reply, word for word.</p>
+      </div>
+
+      <div class="field" data-question="en_write_objecao" data-type="textarea" data-required data-min="220">
+        <textarea class="field-textarea" placeholder="Write your reply in English..." rows="8"></textarea>
+        <div class="char-counter"></div>
+        <p class="field-error hidden"></p>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary w-full py-4 rounded-xl text-lg">Next →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 20 — PRETENSÃO SALARIAL + MODELO                        -->
+    <!-- ============================================================ -->
+    <section id="screen-20" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Passo 10 · Remuneração</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Vamos falar de dinheiro, sem rodeio.</h2>
+      <p class="text-slate-400 mb-6">Responder aqui não te elimina. Preferimos alinhar expectativa agora do que na terceira entrevista.</p>
+
+      <div class="field" data-question="pretensao" data-type="single" data-required>
+        <label class="field-label">Qual sua pretensão de <strong class="text-white">salário fixo mensal</strong> para essa jornada (20h por semana, 18h–22h)?</label>
+        <div class="space-y-2">
+          <button class="option-btn" data-value="ate-1500">Até R$ 1.500</button>
+          <button class="option-btn" data-value="1500-2000">R$ 1.500 a R$ 2.000</button>
+          <button class="option-btn" data-value="2000-2500">R$ 2.000 a R$ 2.500</button>
+          <button class="option-btn" data-value="2500-3000">R$ 2.500 a R$ 3.000</button>
+          <button class="option-btn" data-value="3000-4000">R$ 3.000 a R$ 4.000</button>
+          <button class="option-btn" data-value="4000+">Acima de R$ 4.000</button>
+        </div>
+        <p class="field-error hidden"></p>
+      </div>
+
+      <div class="field" data-question="modelo_remuneracao" data-type="single" data-required>
+        <label class="field-label">Qual modelo te motiva mais?</label>
+        <div class="space-y-2">
+          <button class="option-btn" data-value="fixo-comissao-agressivo">Fixo menor + comissão agressiva por visita agendada e serviço fechado</button>
+          <button class="option-btn" data-value="equilibrado">Fixo equilibrado + comissão por resultado</button>
+          <button class="option-btn" data-value="fixo">Prefiro fixo maior, sem comissão</button>
+        </div>
+        <p class="field-error hidden"></p>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary w-full py-4 rounded-xl text-lg mt-2">Continuar →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 21 — INÍCIO + MOTIVAÇÃO                                 -->
+    <!-- ============================================================ -->
+    <section id="screen-21" class="screen hidden">
+      <p class="text-slate-500 text-sm mb-2">Passo 11 · Última etapa</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Fechando.</h2>
+
+      <div class="field" data-question="inicio" data-type="single" data-required>
+        <label class="field-label">Se der certo, em quanto tempo você consegue começar?</label>
+        <div class="space-y-2">
+          <button class="option-btn" data-value="imediato">Imediatamente</button>
+          <button class="option-btn" data-value="15-dias">Em até 15 dias</button>
+          <button class="option-btn" data-value="30-dias">Em até 30 dias (aviso prévio)</button>
+          <button class="option-btn" data-value="mais-30">Mais de 30 dias</button>
+        </div>
+        <p class="field-error hidden"></p>
+      </div>
+
+      <div class="field" data-question="motivacao" data-type="textarea" data-required data-min="150">
+        <label class="field-label">Por que você quer <em>essa</em> vaga? (pode responder em português)</label>
+        <p class="field-hint">Fala do que te interessa de verdade: o inglês, o comercial, o horário, a chance de crescer com clientes americanos. Resposta genérica pesa contra.</p>
+        <textarea class="field-textarea" placeholder="Escreva sua resposta..." rows="6"></textarea>
+        <div class="char-counter"></div>
+        <p class="field-error hidden"></p>
+      </div>
+
+      <div class="field" data-question="linkedin" data-type="text">
+        <label class="field-label">LinkedIn ou link do currículo <span class="text-slate-500 font-normal">(opcional)</span></label>
+        <input class="field-input" type="url" placeholder="https://linkedin.com/in/seu-perfil">
+        <p class="field-error hidden"></p>
+      </div>
+
+      <button onclick="avancar()" class="cta-primary w-full py-4 rounded-xl text-lg">Enviar minha candidatura →</button>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 22 — LOADING                                            -->
+    <!-- ============================================================ -->
+    <section id="screen-22" class="screen hidden">
+      <div class="text-center py-20">
+        <div class="loading-dots flex justify-center gap-2 mb-8">
+          <span class="w-3 h-3 rounded-full inline-block"></span>
+          <span class="w-3 h-3 rounded-full inline-block"></span>
+          <span class="w-3 h-3 rounded-full inline-block"></span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">Analisando sua candidatura...</h2>
+        <div id="loading-rotator" class="min-h-[3rem]">
+          <p class="text-slate-400 transition-opacity duration-300">Conferindo disponibilidade e localização...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA 23 — RESULTADO                                          -->
+    <!-- ============================================================ -->
+    <section id="screen-23" class="screen hidden">
+      <div class="text-center mb-6">
+        <span id="resultado-badge" class="badge badge-green mb-4 inline-block"></span>
+        <h2 id="resultado-titulo" class="text-2xl md:text-3xl font-bold mb-4"></h2>
+      </div>
+
+      <div class="story-box mb-6">
+        <p id="resultado-texto" class="text-slate-200 leading-relaxed"></p>
+      </div>
+
+      <div id="resultado-proximos" class="info-card mb-6 hidden">
+        <p class="text-sm font-bold text-slate-300 mb-4 tracking-wide">PRÓXIMO PASSO — E É ELIMINATÓRIO</p>
+        <ol class="space-y-3 text-slate-300 text-[0.95rem] list-decimal list-inside">
+          <li>Clique no botão abaixo — ele abre o WhatsApp do nosso RH com sua candidatura já preenchida.</li>
+          <li>Envie a mensagem.</li>
+          <li>Grave e envie <strong class="text-white">um áudio de até 1 minuto, falando em inglês</strong>, respondendo: <em class="va-gold-text">"Tell me about yourself and why you want to work with American customers."</em></li>
+        </ol>
+        <p class="text-slate-400 text-sm mt-4 leading-relaxed">
+          Sem o áudio, a candidatura não avança — é a forma mais rápida de a gente ouvir seu inglês falado.
+          Grave de uma vez só, sem ler texto pronto. A gente percebe.
+        </p>
+      </div>
+
+      <a id="whatsapp-btn" href="#" target="_blank" rel="noopener"
+         onclick="trackAplicacao()"
+         class="whatsapp-cta w-full py-4 rounded-xl text-lg text-center hidden">
+        Enviar candidatura + áudio no WhatsApp →
+      </a>
+
+      <p id="resultado-rodape" class="text-center text-slate-500 text-sm mt-6"></p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TELA KNOCKOUT — BANCO DE TALENTOS                            -->
+    <!-- ============================================================ -->
+    <section id="screen-banco" class="screen hidden">
+      <div class="text-center mb-6">
+        <span class="badge badge-gold mb-4 inline-block">Obrigado pela sinceridade</span>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Pra <em>essa</em> vaga, agora, não bate.</h2>
+      </div>
+
+      <div class="story-box mb-6">
+        <p id="banco-motivo" class="text-slate-200 leading-relaxed mb-4"></p>
+        <p class="text-slate-300 leading-relaxed">
+          Isso não é um julgamento sobre você — é só um requisito duro dessa posição específica.
+          Guardamos seus dados no nosso <strong class="text-white">banco de talentos</strong> e chamamos
+          quando abrir uma vaga com outro formato (outro horário, outro nível de inglês, outra função).
+        </p>
+      </div>
+
+      <div class="info-card">
+        <p class="text-slate-300 leading-relaxed text-[0.95rem]">
+          <strong class="va-highlight">Uma dica prática:</strong> o que mais destrava candidatos nessa vaga é
+          <strong class="text-white">inglês falado ao telefone</strong>. Se essa for a sua barreira, treine conversação
+          (não gramática) por alguns meses e volte aqui. A gente contrata em ciclos.
+        </p>
+      </div>
+
+      <p class="text-center text-slate-500 text-sm mt-6">Suas respostas foram registradas. Não precisa reenviar.</p>
+    </section>
+
+  </main>
+
+  <script src="/va/quizz-va.js"></script>
+</body>
+</html>

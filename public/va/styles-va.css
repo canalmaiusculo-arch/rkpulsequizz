@@ -1,0 +1,268 @@
+/* ============================================
+   RK Pulse Digital — Recrutamento VA
+   Base navy (mesma identidade do quizz de vendas),
+   porém com acento AZUL/DOURADO pra separar
+   "página de carreira" de "página de oferta".
+   ============================================ */
+:root {
+  --bg-deep: #060d1f;
+  --bg-card: #0e162e;
+  --bg-card-hover: #15203f;
+  --border-subtle: #1d2746;
+  --border-strong: #2a3658;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --va-blue: #2563eb;
+  --va-blue-light: #60a5fa;
+  --va-blue-glow: rgba(37, 99, 235, 0.45);
+  --va-gold: #f59e0b;
+  --va-gold-light: #fbbf24;
+  --va-green: #16a34a;
+  --va-red: #dc2626;
+}
+
+body {
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(at 15% 0%, rgba(37, 99, 235, 0.16) 0, transparent 55%),
+    radial-gradient(at 85% 100%, rgba(245, 158, 11, 0.07) 0, transparent 50%);
+  background-attachment: fixed;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.va-header {
+  background: rgba(6, 13, 31, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.va-header::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--va-blue) 0%, #f8fafc 50%, var(--va-gold) 100%);
+  opacity: 0.6;
+}
+
+#progress-bar {
+  background: linear-gradient(90deg, var(--va-blue) 0%, var(--va-blue-light) 100%);
+  box-shadow: 0 0 12px var(--va-blue-glow);
+}
+
+/* ============================================
+   Telas
+   ============================================ */
+.screen { animation: fadeIn 0.45s ease-out; }
+.screen.hidden { display: none; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   Botões de opção
+   ============================================ */
+.option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.75rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.45;
+}
+.option-btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--va-blue);
+  transform: translateX(2px);
+}
+.option-btn.selected {
+  border-color: var(--va-blue);
+  background-color: rgba(37, 99, 235, 0.14);
+  box-shadow: inset 4px 0 0 var(--va-blue);
+}
+
+/* ============================================
+   CTAs
+   ============================================ */
+.cta-primary {
+  background: linear-gradient(135deg, var(--va-blue) 0%, #1d4ed8 100%);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 6px 22px -6px var(--va-blue-glow);
+  transition: all 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  font-family: inherit;
+}
+.cta-primary:hover {
+  background: linear-gradient(135deg, #3b82f6 0%, var(--va-blue) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px -6px var(--va-blue-glow);
+}
+.cta-primary:active { transform: scale(0.97); }
+
+.whatsapp-cta {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 10px 30px -10px rgba(34, 197, 94, 0.6);
+  transition: all 0.2s;
+  display: block;
+}
+.whatsapp-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px -10px rgba(34, 197, 94, 0.8);
+}
+.whatsapp-cta:active { transform: scale(0.97); }
+
+/* ============================================
+   Campos de texto / textarea
+   ============================================ */
+.field { margin-bottom: 1.25rem; }
+
+.field-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.field-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.field-input,
+.field-textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.75rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field-input::placeholder,
+.field-textarea::placeholder { color: #64748b; }
+
+.field-input:focus,
+.field-textarea:focus {
+  outline: none;
+  border-color: var(--va-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+.field-textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: #fca5a5;
+  margin-top: 0.4rem;
+}
+.field-error.hidden { display: none; }
+
+.field.invalid .field-input,
+.field.invalid .field-textarea {
+  border-color: var(--va-red);
+}
+
+.char-counter {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 0.3rem;
+}
+.char-counter.ok { color: #4ade80; }
+
+/* ============================================
+   Blocos de narrativa / caixas
+   ============================================ */
+.story-box {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.07) 0%, rgba(245, 158, 11, 0.04) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.narrative-line {
+  opacity: 0;
+  animation: fadeInLine 0.6s ease-out forwards;
+}
+.narrative-line:nth-child(1) { animation-delay: 0.15s; }
+.narrative-line:nth-child(2) { animation-delay: 0.9s; }
+.narrative-line:nth-child(3) { animation-delay: 1.65s; }
+.narrative-line:nth-child(4) { animation-delay: 2.4s; }
+.narrative-line:nth-child(5) { animation-delay: 3.15s; }
+.narrative-line:nth-child(6) { animation-delay: 3.9s; }
+.narrative-line:nth-child(7) { animation-delay: 4.65s; }
+
+@keyframes fadeInLine {
+  to { opacity: 1; }
+}
+
+.info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+}
+.badge-blue  { background: rgba(37, 99, 235, 0.18); color: var(--va-blue-light); }
+.badge-gold  { background: rgba(245, 158, 11, 0.16); color: var(--va-gold-light); }
+.badge-green { background: rgba(22, 163, 74, 0.18); color: #4ade80; }
+
+.va-highlight { color: var(--va-blue-light); font-weight: 700; }
+.va-gold-text { color: var(--va-gold-light); font-weight: 700; }
+
+/* Bloco em inglês — sinaliza visualmente a troca de idioma */
+.english-block {
+  border-left: 3px solid var(--va-gold);
+  padding-left: 1rem;
+}
+
+/* ============================================
+   Loading
+   ============================================ */
+.loading-dots span {
+  background-color: var(--va-blue-light);
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}

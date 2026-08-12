@@ -6,6 +6,8 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/va/?", "dest": "/public/va/index.html" },
+    { "src": "/va/(.*)", "dest": "/public/va/$1" },
     { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
     { "src": "/styles.css", "dest": "/public/styles.css" },
     { "src": "/quizz.js", "dest": "/public/quizz.js" },
