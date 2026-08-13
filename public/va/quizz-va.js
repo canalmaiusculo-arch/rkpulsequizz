@@ -190,10 +190,44 @@ document.addEventListener('input', (e) => {
   if (!campo) return;
   if (!['text', 'textarea'].includes(campo.dataset.type)) return;
 
+  // Telefone ganha máscara enquanto digita — reduz cadastro torto
+  if (campo.dataset.format === 'phone') {
+    const noFim = e.target.selectionStart === e.target.value.length;
+    e.target.value = mascararTelefone(e.target.value);
+    if (noFim) {
+      const fim = e.target.value.length;
+      try { e.target.setSelectionRange(fim, fim); } catch (err) { /* input type=tel */ }
+    }
+  }
+
   state.answers[campo.dataset.question] = e.target.value.trim();
   atualizarContador(campo);
   limparErro(campo);
 });
+
+// (34) 99911-2233 — aceita fixo (10 dígitos) e celular (11)
+function mascararTelefone(valor) {
+  const d = String(valor).replace(/\D/g, '').slice(0, 11);
+  if (d.length <= 2) return d.length ? `(${d}` : '';
+  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+}
+
+/**
+ * Normaliza pro formato internacional (55DDDNÚMERO), que é o que
+ * automação de WhatsApp e discador precisam. Retorna '' se não der.
+ */
+function telefoneE164(valor) {
+  let d = String(valor || '').replace(/\D/g, '');
+
+  if (d.startsWith('0')) d = d.replace(/^0+/, '');          // 0 do DDD interurbano
+  if (d.length === 10 || d.length === 11) d = '55' + d;      // DDD + número
+  if (d.length === 12 || d.length === 13) {
+    return d.startsWith('55') ? d : '';
+  }
+  return '';
+}
 
 function atualizarContador(campo) {
   const contador = campo.querySelector('.char-counter');
@@ -243,8 +277,8 @@ function validarTela(tela) {
         erro = `Escreva um pouco mais — faltam ${min - texto.length} caracteres.`;
       } else if (texto && formato === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(texto)) {
         erro = 'Digite um e-mail válido.';
-      } else if (texto && formato === 'phone' && texto.replace(/\D/g, '').length < 10) {
-        erro = 'Digite o WhatsApp com DDD.';
+      } else if (texto && formato === 'phone' && !telefoneE164(texto)) {
+        erro = 'Digite o WhatsApp com DDD — ex.: (34) 99911-2233.';
       }
     }
 
@@ -477,7 +511,12 @@ function enviarParaSheet(status, tier, motivoKO) {
 
   // evita linha duplicada quando o candidato clica no WhatsApp
   if (status === 'audio-solicitado' && state.enviado) {
-    postar({ status, nome: state.answers.nome || '', whatsapp: state.answers.whatsapp || '' });
+    postar({
+      status,
+      nome: state.answers.nome || '',
+      whatsapp: state.answers.whatsapp || '',
+      whatsapp_e164: telefoneE164(state.answers.whatsapp)
+    });
     return;
   }
 
@@ -491,7 +530,11 @@ function enviarParaSheet(status, tier, motivoKO) {
     pontuacao: calcularPontuacao(),
     acertos_ingles: `${acertosIngles()}/4`,
     nome: a.nome || '',
-    whatsapp: a.whatsapp || '',
+    whatsapp: a.whatsapp || '',                              // como o candidato digitou
+    whatsapp_e164: telefoneE164(a.whatsapp),                 // 5534999112233 — pra automação
+    whatsapp_link: telefoneE164(a.whatsapp)                  // clicável direto da planilha
+      ? 'https://wa.me/' + telefoneE164(a.whatsapp)
+      : '',
     email: a.email || '',
     idade: a.idade || '',
     moradia: a.moradia || '',

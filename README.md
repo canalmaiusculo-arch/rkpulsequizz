@@ -101,10 +101,21 @@ Tudo em `public/va/quizz-va.js`, no topo do arquivo:
 - `WEBHOOK_URL` — já apontando pro **Catch Hook do Zapier**. Se um dia quiser trocar por Google Sheets direto, use o Apps Script de `scripts/google-apps-script-va.gs` (deploy separado do de vendas) — ele aceita os dois formatos.
 
 ## Como as respostas chegam
-Cada candidatura é um POST **`application/x-www-form-urlencoded`** com 32 campos nomeados
+Cada candidatura é um POST **`application/x-www-form-urlencoded`** com 34 campos nomeados
 (`status`, `tier`, `pontuacao`, `acertos_ingles`, `nome`, `whatsapp`, `email`, `en_write_intro`,
 `en_write_roleplay`, `en_write_objecao`, `pretensao`...). Arrays (`ingles_origem`, `ferramentas`)
 chegam como texto separado por vírgula.
+
+O contato vem em três formatos, porque cada um serve pra uma coisa:
+
+| Campo | Exemplo | Pra quê |
+|---|---|---|
+| `whatsapp` | `(34) 99911-2233` | leitura humana, como o candidato digitou |
+| `whatsapp_e164` | `5534999112233` | automação — WhatsApp API, discador, Zap de disparo |
+| `whatsapp_link` | `https://wa.me/5534999112233` | clicar direto da planilha e abrir a conversa |
+
+O campo tem máscara enquanto digita e só passa com DDD válido (10 ou 11 dígitos). Se o número
+for irrecuperável, `whatsapp_e164` e `whatsapp_link` chegam vazios em vez de sujar a automação.
 
 Form-encoded é proposital: o hook do Zapier responde ao preflight sem
 `access-control-allow-headers`, então `application/json` seria barrado pelo navegador.

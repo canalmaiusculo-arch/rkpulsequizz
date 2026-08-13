@@ -17,7 +17,7 @@
  *    - Quem pode acessar: "Qualquer pessoa"   ← IMPORTANTE
  * 6. Implantar → autorizar
  * 7. COPIE A URL (termina em /exec) e cole em public/va/quizz-va.js
- *    na constante SHEETS_WEBHOOK_URL
+ *    na constante WEBHOOK_URL
  * 8. Commit + push pra Vercel — pronto
  *
  * STATUS que chegam aqui:
@@ -37,6 +37,8 @@ const HEADERS = [
   'Motivo desqualificação',
   'Nome',
   'WhatsApp',
+  'WhatsApp (E.164)',
+  'Link WhatsApp',
   'E-mail',
   'Idade',
   'Mora em',
@@ -82,6 +84,8 @@ function doPost(e) {
       data.motivo_desqualificacao || '',
       data.nome || '',
       data.whatsapp || '',
+      data.whatsapp_e164 || '',
+      data.whatsapp_link || '',
       data.email || '',
       data.idade || '',
       data.moradia || '',
@@ -145,7 +149,7 @@ function pegarAba() {
     sheet.appendRow(HEADERS);
     sheet.getRange(1, 1, 1, HEADERS.length)
       .setFontWeight('bold')
-      .setBackground('#2563eb')
+      .setBackground('#009080')
       .setFontColor('#ffffff');
     sheet.setFrozenRows(1);
     sheet.setFrozenColumns(6);
